@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FTS-441</title>
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/light.css" />
+  <script type="module"
+    src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace-autoloader.js"></script>
+
+  <link rel="stylesheet" href="./index.css">
+
+  <link rel="stylesheet" href="./components/team-member/team-member.css">
+  <script type="module" src="./components/team-member/team-member.js"></script>
+
+  <link rel="stylesheet" href="./components/table-of-content/table-of-content.css">
+
+  <script type="module" src="./components/image/image-component.js"></script>
+
+  <script type="module" src="./components/video/video.js"></script>
+
+  <link rel="stylesheet" href="./components/references/references.css">
+
+  <link rel="stylesheet" href="./components/scroll-to-top/scroll-to-top.css">
+  <script src="./components/scroll-to-top/scroll-to-top.js"></script>
+
+  <script src="./components/table-component/table-component.js"></script>
+
+  <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="content">
+    <h1 style=" text-align: center;">FTS-441 FSAE Vehicle Dynamics and Steering System Optimisation </h1>
+    <image-component tag="image" source="assets/NUS FSAE LOGO.jpg"
+          subtitle=""></image-component>
+
+    <!-- This is the team member component use to display details about your team members -->
+    <div class="team-member-wrapper">
+      <team-member avatar="assets/Sam.jpg" name="Sam Nicholas Marrett" department="Mechanical Engineering with Second Major in IDP"
+        year="2025"></team-member>
+    </div>
+    
+    <!-- This is a divide from the shoelace library for aesthetic purpose -->
+    <sl-divider></sl-divider>
+
+    <!-- This is the table-of-content component use to define all of the link directly to each section -->
+    <div class="table-of-content">
+      <h2>Table of Contents</h2>
+      <sl-tree>
+        <sl-tree-item expanded>
+          <a href="#Introduction">1. Introduction</a>
+          <sl-tree-item>
+            <a href="#Team Composition">1.1. Team Composition</a>
+          </sl-tree-item>
+          <sl-tree-item>
+            <a href="#R25e Post Competition Remarks">1.2. R25e Post Competition Remarks</a>
+          </sl-tree-item>
+          <sl-tree-item>
+            <a href="#Team Goal & Problem Statement Analysis">1.3. Team Goal & Problem Statement Analysis</a>
+              <sl-tree-item>
+                <a href="#Skidpad Competition Performance">1.3.1. Skidpad Competition Performance</a>
+              </sl-tree-item>
+                <sl-tree-item>
+                  <a href="#Steering Feedback Analysis">1.3.2. Steering Feedback Analysis</a>
+                </sl-tree-item>               
+          </sl-tree-item>
+          <sl-tree-item>
+            <a href="#The Problem Statement">1.4. The Problem Statement</a>
+          </sl-tree-item>
+        </sl-tree-item>
+
+        <sl-tree-item expanded>
+          <a href="#Suspension Design Optimisation">2. Suspension Design Optimisation</a>
+          <sl-tree-item>
+            <a href="#Suspension Stiffness">2.1. Suspension Stiffness</a>
+            <sl-tree-item>
+                <a href="#What Happens During Roll?">2.1.1. What Happens During Roll?</a>
+              </sl-tree-item>
+              <sl-tree-item>
+                <a href="#Droop and Bump Travel Analysis">2.1.2. Droop and Bump Travel Analysis</a>
+              </sl-tree-item>
+          </sl-tree-item>
+          <sl-tree-item>
+            <a href="#Final Conclusion - Suspension Stiffness">2.2. Final Conclusion - Suspension Stiffness</a>
+          </sl-tree-item>
+          <sl-tree-item>
+            <a href="#Steering Torque Analysis">2.3. Steering Torque Analysis</a>
+              <sl-tree-item>
+                <a href="#Steering Ratio (SR)">2.3.1. Steering Ratio (SR)</a>
+              </sl-tree-item>
+              <sl-tree-item>
+                <a href="#King-Pin Inclination angle (σ)">2.3.2. King-Pin Inclination angle (σ)</a>
+              </sl-tree-item>
+          </sl-tree-item>
+          <sl-tree-item>
+            <a href="#Final Conclusion - Steering Torque Analysis">2.4. Final Conclusion - Steering Torque Analysis</a>
+          </sl-tree-item>
+        </sl-tree-item>
+        <sl-tree-item>
+          <a href="#Future Work & Additional Remarks">3. Future Work & Additional Remarks</a>
+        </sl-tree-item>
+
+        <sl-tree-item>
+          <a href="#references">References</a>
+        </sl-tree-item>
+        <sl-tree-item>
+          <a href="#Declaration">Declaration</a>
+        </sl-tree-item>
+      </sl-tree>
+    </div>
+    <sl-divider></sl-divider>
+
+    <div>
+
+      <!-- This is an example of what a section might look like -->
+      <div id="Introduction">
+        <h2>1. Introduction</h2>
+        <image-component tag="image" source="assets/fsae_ev.jpg"
+          subtitle="Image 1: FSAE EV Michigan 2025"></image-component><br>
+        <p>
+         Formula SAE (FSAE) is a intercollegiate competitions held by Society of Automotive Engineers 
+         (SAE) International, where universities design, manufacture, build and race formula-style race cars. 
+          Each car will be judged on its design, cost, efficiency, and performance through a series of dynamic 
+          and static events, as well as its compliance with safety during technical inspection. Team members 
+          will also be judged on their capabilities in team management, design thinking, technical knowledge, 
+          and engineering practices. 
+        </p>
+      </div>
+
+      <div id="Team Composition">
+        <h3>1.1. Team Composition</h3>
+        <image-component tag="image" source="assets/Departments.png"
+          subtitle="Image 2: NUS FSAE department chart"></image-component><br>
+        <p>
+          R26e has a total of 27 members from various departments. The team is mainly split into 2 core principals, Powertrain
+          and Chassis. Each principal is further divided into departments that focus on specific areas of the car's design.
+
+        </p>
+      </div>
+
+      <div id="R25e Post Competition Remarks">
+        <h3>1.2. R25e Post Competition Remarks</h3>
+        <image-component tag="image" source="assets/NUS 7th.jpg"
+          subtitle="Image 3: NUS FSAE R25e 7th Overall"></image-component><br>
+        <p>
+          R25e achieved the highest overall standing of 7th place in the 2025 Formula SAE Electric competition held in
+          Michigan, USA. We were able to secure top 10th position in most events, which demonstrated the car's well-rounded
+          performance. However, there were areas for improvement, particularly in the dynamic events, where we
+          faced challenges with handling and reliability. One of the main issues identified was the car's
+          battery management system (BMS), which had overheating issues during all testing and competition runs.
+          This not only affected the car's performance but also raised safety concerns. Additionally, the handling
+          characteristics of the car were not optimal, leading to repeated oversteer.
+          
+        </p>
+      </div>
+      <div id="Team Goal & Problem Statement Analysis">
+        <h3>1.3. Team Goal & Problem Statement Analysis</h3>
+        <p>
+          The Team Goal for the R26e season is to reduce the average lap time in the Endurance event by 10% through
+          improved reliability. To support this goal, the V.D. Suspension department has set a specific objective to enhance 
+          the car's handling characteristics. To better understand the handling issues, a comprehensive vehicle dynamics analysis 
+          will be conducted on the R25e competition and testing data. The analysis will focus on identifying the root causes of the 
+          handling problems. 
+            
+        </p>
+        <div id="Skidpad Competition Performance">
+              <h4>1.3.1. Skidpad Competition Performance</h4>
+              <image-component tag="image" source="assets/Skidpad Layout.jpg"
+              subtitle="Image 4: skidpad layout (Powercat Motorsports, n.d.)"></image-component><br>
+              <p> 
+                The goal of the Skid Pad event is to measure the vehicle’s maximum cornering capability by measuring the total 
+                time required for the vehicle to complete one left hand and one right hand circle.  The event is designed to 
+                focus on the vehicle’s suspension design characteristics and tune-ability for maximum lateral grip and minimise 
+                the effect of driver reflexes during transitional manoeuvres (Goslawski, Snyder, 2023).
+              </p>
+              <image-component tag="image" source="assets/GG competition skidpad scatter plot.png"
+              subtitle="Image 5: G-G plot of competiton skidpad stint"></image-component><br>
+              <p> 
+                Skidpad performance can be evaluated on the G-G plot of the vehicle's lateral acceleration 
+                against longitudinal acceleration during the event. The skidpad tests the vehicle's steady-state cornering
+                capabilities, which is represented by minimal variance in lateral acceleration throughout the run. From the G-G 
+                plot above from the competition skidpad, it is evident that the vehicle experienced significant fluctuations in 
+                lateral acceleration during, both the left and right. This indicates that the vehicle was unable to maintain a 
+                consistent cornering force, loosing lap time potential and indicating handling issues.
+              </p>
+        </div>
+        <div id="Steering Feedback Analysis">
+              <h4>1.3.2. Steering Feedback Analysis</h4>
+              <p> 
+                Steering feedback is a critical aspect of vehicle handling, as it provides the driver with information 
+                about the limit of grip and the vehicle's behaviour during cornering. However, too much feedback can lead to
+                driver fatigue and reduced control over the vehicle. In the case of R25e, drivers reported excessive steering 
+                feedback during slow speed manoeuvres, which could be attributed to the suspension geometry and setup. Some
+                complains included: the steering felt heavy at low speeds, making it difficult to navigate tight corners;
+                after half my Endurance stint, my arms were exhausted from fighting the steering wheel; the car was difficult to
+                control after extensive turning, leading to understeer and loss of control.
+              </p>
+              <image-component tag="image" source="assets/Driver Evalution scatter plot 1.png"
+              subtitle="Image 6: Steering Angle vs Vehicle Speed, Driver Evaluation"></image-component><br>
+              <p>
+                Image 6 represents the driver evaluation done in Singapore before competition. Driver evaluation is a crucial
+                test to decide the best driver for the endurance event, 11km of continuous driving. This data is taken from
+                the driver chosen for endurance event. The plot above shows the relationship between steering angle and vehicle 
+                speed. The scatter plot in red and the corresponding red bar is his fastest lap, while the other scatter points represent 3 of his slower laps
+                that occurred in the second half of his stint. From the plot, it is evident that he is consistently steering under
+                the optimal steering range. This indicates that the driver is unable to exert optimal steering inputs to the car.
+              </p>
+              <image-component tag="image" source="assets/Driver Evalution scatter plot 2.png"
+              subtitle="Image 7: Brake Pressure vs Vehicle Speed, Driver Evaluation: Good Example "></image-component><br>
+              <p>
+                To understand the full extent of the driver's struggle, we can also look at the relationship between 
+                brake pressure and vehicle speed. Similarly, the scatter plot in red represents his fastest lap, while 
+                the other scatter points represent 3 laps with fast lap times, which occurred in the start of his stint.
+                From the plot, it is evident that the driver was able to apply consistent brake pressure inputs, demonstrating
+                assets of a skilled endurance driver.
+              </p>
+              <image-component tag="image" source="assets/Driver Evalution scatter plot 3.png"
+              subtitle="Image 8: Brake Pressure vs Vehicle Speed, Driver Evaluation: Bad Example "></image-component><br>
+              <p> 
+                Now comparing with the scatter plots from his slower laps in the second half of his stint, we can see a
+                significant increase in the variance of brake pressure inputs at irregular vehicle speeds. This indicates that
+                the driver was struggling to make precise brake inputs, likely due to poor judgment as a result of fatigue.
+              </p>
+        </div>
+      </div>
+      <div id="The Problem Statement">
+        <h3>1.4. The Problem Statement</h3>
+        <p>
+          The skidpad performance is inconsistent, with significant fluctuations in lateral acceleration during 
+          cornering. Moreover, the lack of driver's authority over the car has induced high driver fatigue, 
+          resulting in poor decision making and inconsistent lap times during the endurance event. 
+          This has been identified as critical issues that needs to be addressed to improve the overall performance 
+          of the vehicle. 
+    </div>
+
+
+    <br />
+    <br />
+    <sl-divider></sl-divider>
+    <div>
+      <div id="Suspension Design Optimisation">
+        <h2>2. Suspension Design Optimisation</h2>
+        <p>
+          Dynamic behaviour of a vehicle can be described by 2 main terms: Roadholding and Handling. Roadholding 
+          refers to the vehicle's ability to maintain contact with the road surface, by controlling lifting movements
+          along the vertical axis (z-axis), such as heave, or a rotational movement around the lateral axis (y-axis), such as pitch (Pütz, Serné, 2025).
+          Handling, on the other hand, refers to the lateral dynamicis and thus describes the ability of a vehicle to
+          drive around a corner quickly and stably (Pütz, Serné, 2025).
+        </p>
+        <image-component tag="image" source="assets/car axis.jpg"
+          subtitle="Image 9: SAE Car Axis (Pütz, Serné, 2025) "></image-component><br>
+      </div>
+      <div id="Suspension Stiffness">
+        <h3>2.1. Suspension Stiffness</h3>
+        <p>
+          R25e ran a high suspension spring stiffness rate of 300 lb/in (52.4 N/mm) at both axles.
+          High spring rates are typically used to reduce body roll and improve responsiveness during cornering, 
+          sacrificing the vehicle's roadholding capabilities. Typically for a FSAE Michigan competition track, the conditions
+          are smooth and well-maintained, allowing for the use of stiffer suspension setups. However, in the case of R25e, 
+          the high spring rates may have contributed to the handling issues. To better understand the impact of suspension stiffness,
+          I will be analysing on suspension roll dynamics.
+        </p>
+        <image-component tag="image" source="assets/fsae_ev_25_04493.jpg"
+          subtitle="Image 10: FSAE Michigan 2025 track condition"></image-component><br>
+          <div id="What Happens During Roll?">
+            <h4>2.1.1. What Happens During Roll?</h4>
+            <image-component tag="image" source="assets/OptimumG Roll Diagram.jpg"
+            subtitle="Image 11: Roll Diagram (Rouelle, n.d.)"></image-component><br>
+            <p> 
+              During cornering, the centrifugal force acting on the vehicle center of gravity causes the vehicle 
+              to roll about its roll center. This roll motion results in the compression of the suspension on the outer wheels
+              (bump travel) and the extension of the suspension on the inner wheels (droop travel). Once the limit of suspension 
+              travel is reached, the inner wheel will lift off the ground, resulting in a loss of traction and stability.
+            </p>
+          </div>
+          <div id="Droop and Bump Travel Analysis">
+            <h4>2.1.2. Droop and Bump Travel Analysis</h4>
+            <image-component tag="image" source="assets/Spring Compression Analysis.jpg"
+            subtitle="Table 1: Excel Calculation of Spring Compression"></image-component><br>
+            <p>
+              After performing calculations on the suspension spring compression. It was found that the 300 lb/in 
+              suspension springs were only compressing by 10.223 mm under static loading conditions. That results 
+              in a 10.223 mm available droop travel and a remaining 46.777 mm of bump travel. The total stroke is
+              57 mm, which is the maximum travel of the Ohlins TTX25 MKll shock absorbers used in R25e and R26e.
+            </p>
+            <image-component tag="image" source="assets/Skidpad Competition linear pod.png"
+            subtitle="Image 12: Damper travel of Left and Right Rear Tyres vs Average Lateral Acceleration during Competition Skidpad Event"></image-component><br>
+            <p>
+              The data above represents the damper travel of the left and right rear tyres during the competition skidpad event.
+              From the plot, droop travel is represented by positive damper travel values, while bump travel is represented by 
+              negative damper travel values. It is evident that the damper travels an estimated maximum of 8 mm in bump travel while
+              it can only travel a maximum of 6 mm in droop travel. Not much can be inferred from this plot since the 
+              car was not driven hard enough to visualise any anomalies in the damper travel. Hence, I will be analysing
+              the damper travel during autocross, where the car was driven more aggressively.
+            </p>
+            <image-component tag="image" source="assets/AutoX Competition linear pod.png"
+            subtitle="Image 13: Damper travel of Left and Right Rear Tyres vs Average Lateral Acceleration during Competition Autocross Event"></image-component><br>
+            <p>
+              From the competition autocross data above, we can see that the droop travel for both left and right rear tyres
+              is blocked by an invisible line at 6 mm of damper travel, whereas the bump travel is hitting an estimated maximum of 12
+              mm of damper travel. This indicates that the suspension droop travel limit is at 6 mm, and the limit of 
+              the damper travel has been hit for both autocross and skidpad events. This is a clear indication that the suspension
+              setup is too stiff, causing the inner wheel to lift off the ground during cornering as the damper is unable to
+              extend any further.
+            </p>
+          </div>
+       
+      </div>
+      <div id="Final Conclusion - Suspension Stiffness">
+        <h3>2.2. Final Conclusion - Suspension Stiffness</h3>
+        <p>
+          This is a tricky topic to conclude, as the trade-offs of changing suspension stiffness are very
+          significant to the handling and roadholding characteristics of the vehicle. From the analysis above,
+          it is evident that the inner tyre is lifting off the ground during cornering due to the limited droop 
+          travel of the suspension.
+        </p>
+        <image-component tag="image" source="assets/Dyanmic Tyre Load Changes.jpg"
+            subtitle="Image 14: Dyanmics Tyre Load Changes Effects on Overall Lateral Grip (Frömming, 2023)"></image-component><br>
+        <p>
+          In theory when dynamic load changes occur, it is expected that the overall lateral grip of the axle will
+          decrease due to the non-linear characteristics of tyre grip. As shown in the image above, when a 4 kN of
+          load difference occurs, the lateral force at that axle decreases against the ideal average lateral force
+          when there is no load difference between left and right tyre. For a racing car, it is expected to keep
+          the wheel load changes that occur as low as possible to achieve the best driving performance (Frömming, 2023).
+          When the inner wheel lifts off the ground, it results in 100% load transfer on that axle.
+        </p>
+        <p>
+          In rally cars, it is common practice to lift the inner rear wheel off the ground during hard cornering. 
+          For a Front Wheel Drive (FWD) car, this technique is used to maximise the 
+          traction of the driven wheels by lifting the inner rear wheel off the ground, allowing the outer rear wheel 
+          to overload and yaw the car. However, for a Rear Wheel Drive (RWD) car like R25e and R26e, it is unclear
+          the effects of lifting the inner rear wheel off the ground.
+        </p>
+        <p>
+          For the R26e, the suspension spring rates will be reduced to 225 lb/in (39.3 N/mm) at the front and 200 lb/in 
+          (34.9 N/mm) at the rear. This change is expected to increase the droop travel of the suspension, allowing
+          for more droop travel allowance for dynamic events. For the difference in spring rates,
+          the front suspension will be stiffer for more turn-in response in corners and control oversteer characteristics
+          during bumps. The rear suspension will be relatively softer to increase mechanical grip and 
+          minimise contact patch variation, which is important for the driven wheels. However, the drawbacks of 
+          softening both front and rear axles are increased body roll during cornering and reduced responsiveness,
+          which changes the handling of the car drastically.
+        </p>
+        <p>
+          Thorough testing and validation are required before we can assess whether this modification effectively 
+          minimises lateral acceleration variations observed during the skidpad event and improves vehicle handling 
+          performance.
+        </p>
+       
+      </div>
+
+      <div id="Steering Torque Analysis">
+        <h3>2.3. Steering Torque Analysis</h3>
+        <image-component tag="image" source="assets/Steering diagram.jpg"
+          subtitle="Image 15: Steering System Diagram (Rill, Castro, 2020)"></image-component><br>
+        <p>
+          The steering assembly can be analysed from the rack and pinion mechanism above. The steering torque from the 
+          driver overcomes the resistive torque from the tyre-road interaction and the frictional losses in the steering 
+          system.
+        </p>
+        <image-component tag="image" source="assets/steering torque equation.jpg"
+          subtitle="Image 16: Steering Torque Derived Equation (Rill, Castro, 2020)"></image-component><br>
+          <p>
+            The steering torque equation above represents the resistive load that the driver must overcome to maintain
+            a constant steering angle in a corner. From the equation, we can see that the resistive torque is directly proportional 
+            to the generalised steering ratio (i). This value (i) is inversely proportional to the steering ratio (SR) of the vehicle, 
+            which is defined as the ratio between the steering wheel angle and the road wheel angle. The other components of the
+            equation represent the tyre forces and geometry.
+          </p>
+          <image-component tag="image" source="assets/Table 1.png"
+          subtitle="Table 2: Parameters of Steering Effort (Milliken, Milliken, 1995)"></image-component><br>
+          <p>
+            From Table 2, I will be focusing on the steering ratio (SR) and the King-Pin Inclination angle (σ) as the main factors that
+            changed between R25e and R26e. The other parameters are changes due to packaging constraints and engineering 
+            trade-offs outside of the steering system, and thus will not be discussed in this analysis.
+          </p>
+            <div id="Steering Ratio (SR)">
+              <h4>2.3.1. Steering Ratio (SR)</h4>
+              <p>
+                From Table 2, the steering ratio (SR) of R26e is higher than R25e, increasing from 4.577 to 4.902 on the inner wheel, and
+                from 4.644 to 6.213 on the outer wheel. This change in steering ratio results in a decrease in the generalised 
+                steering ratio (i), leading to a reduction in the resistive steering torque that the driver must overcome.
+              </p>
+              
+              <image-component tag="image" source="assets/OPTK Steering Graph.png"
+              subtitle="Image 17: OptimumKinematics Steering Ratio Plot - Steering Ratio vs Steering Motion"></image-component><br>
+              <p>
+                The steering ratio (SR) is obtained from the OptimumKinematics software, which is used for suspension 
+                and steering kinematics. The plot above in red is the steering ratio of R26e which is greater than the 
+                steering ratio of the R25e. The graph is plotted over a range of steering motion from 0° to 120° steering wheel input
+                and the steering ratio is averaged over the left and right wheels.
+              </p>
+            </div>
+            <div id="King-Pin Inclination angle (σ)">
+              <h4>2.3.2. King-Pin Inclination angle (σ)</h4>
+              <p>
+                Apart from steering ratio, the King-Pin Inclination angle (σ), also plays a significant role in the steering
+                resistive torque. From Table 1, we can see that the King-Pin Inclination angle (σ) has decreased from 
+                11.7° in R25e to 8° in R26e.
+              </p>
+              <image-component tag="image" source="assets/TG Equation.jpg"
+              subtitle="Image 18: Moment Equation for Tyre Moment due to Verticle Load (Gillespie, 2021)"></image-component><br>
+              <image-component tag="image" source="assets/TG Image.jpg"
+              subtitle="Image 19: Tyre Diagram for Tyre Moment due to Verticle Load (Gillespie, 2021)"></image-component><br>
+              <p>
+                The vertical force component (Fz) acting on lateral inclination angle/ King-Pin Inclination angle (σ), results
+                in a sine angle force component (Fz x sinσ), which nominally acts laterally on the moment arm, scrub radius (s)
+                multiplied by sine of steering angle (sinδ). This moment is initially zero at zero steering angle and increases
+                the resistive torque as the steering angle increases (Gillespie, 2021). 
+              </p>
+              <p>
+                From a suspension geometry perspective, introducing high King-Pin Inclination angle (σ) will increase the lift 
+                or jacking effect during cornering on both tyres (Derek, 2015). This jacking effect is felt by the driver as 
+                an additional steering torque needed to lift an effective component of the vehicle's weight as steering angle 
+                increases.
+              </p>
+            </div>
+      </div>
+      <div id="Final Conclusion - Steering Torque Analysis">
+        <h3>2.4. Final Conclusion - Steering Torque Analysis</h3>
+        <p>
+          For this iteration of R26e, I aimed for a steering ratio (SR) that is approximately in the range of R25e and
+          R24e to balance between steering responsiveness and steering effort. From the comments of the drivers over
+          the three batches, despite the fatigue from the endurance event, they were content with the steering
+          responsiveness due to the high steering ratio (SR) implemented. 
+        </p>
+        <p>
+          For R26e, a different approach was taken to raise Ackermann percentage by inducing a higher difference in 
+          steering ratio (SR) between the inner and outer wheels. The effect of this change is uncertain until
+          testing and validation is done, but it is expected to improve the turn-in response of the FSAE car during
+          cornering as the Ackermann effect is significant in racing series with low cornering speeds (Milliken, Milliken, 1995).
+        </p>
+        <p>
+          As for King-Pin Inclination angle (σ), I am addressing the heavy steering feedback at low speeds. Corners
+          that require low speeds tend to be hairpins in the FSAE track that require significant steering input.
+          By reducing the King-Pin Inclination angle (σ), the jacking effect during cornering is reduced, leading to
+          a lighter steering effort for the driver.
+        </p>
+        <p>
+          All in all, after calculating the steering moment needed to overcome the resistive torque from the tyre-road 
+          interaction, the normalised steering torque for R26e is approximately 77.3% of R25e. The assumptions made
+          are that the tyre forces and moments remain the same between R25e and R26e, which is reasonable since 
+          both cars used the same tyre compound and size. However, the accuracy can be improved by conducting physical 
+          testing and improving our tyre model to produce combined slip characteristics that are more representative of
+          a real FSAE car.
+        </p>
+        <p>
+          The biggest change was the steering ratio (SR), which will reduce the steering responsiveness of the car.
+          The trade-off is worth the risk to improve the precision of driver inputs during long stints.
+        </p>
+        <p>
+          By addressing the steering feedback, I am directly reducing driver fatigue during long endurance stints.
+          This will allow the driver to maintain better control over the car and make more precise inputs, leading to
+          improved handling and lap times. 
+        </p>
+      </div>
+    </div>
+    
+    <sl-divider></sl-divider>
+    <div>
+      <div id="Future Work & Additional Remarks">
+        <h2>3. Future Work & Additional Remarks</h2>
+        <image-component tag="image" source="assets/gantt.png"
+              subtitle="Image 20: NUS FSAE Timeline"></image-component><br>
+        <p>
+          According to the timeline above, majority of my testing and validation work will be done during Feb-26 to
+          May-26. I will be conducting various tests to validate the changes made to the suspension design and steering 
+          system. Data will be collected during testing sessions to conduct a comprehensive comparison between
+          R26e and R25e.
+        </p>
+        <image-component tag="image" source="assets/R26e Steering Assembly.png"
+              subtitle="Image 21: R26e Steering Assembly CAD Model"></image-component><br>
+        <p>
+          The assembly I am responsible to manufacture for R26e will be the steering system as shown above during Dec-25
+          to Jan-26. To ensure the robustness and reliability of the design, FEA analysis will be refined and repeatedly
+          studied to identify potential failure points before manufacturing and assembly.
+        </p>
+
+      </div>
+
+    </div>
+
+    
+
+    <!-- This is an example of how you can use the references component to create references -->
+    <div id="references" class="references">
+      <sl-divider></sl-divider>
+      <h2>References</h2>
+      <ul>
+        <li>
+          Frömming, L. (2023). Basic Course in Race Car Technology. Springer Vieweg.
+        <li>
+          Golawki, S., Snyder, A. (2023). Skidpad Event Description - Formula SAE.
+        </li>
+        <li>
+          Gillespie, T. D. (2021). Fundamentals of Vehicle Dynamics Revised Edition. SAE International.
+        </li>
+        <li>
+          Milliken, D. L., Milliken W. F. (1995). Race Car Vehicle Dynamics. SAE International.
+        </li>
+        <li>
+          Pütz, R., Serné, T. (2025). Race Car Handling Optimization: Magic Numbers to Better 
+          Understand a Race Car Second Edition. Springer Nature.
+        </li>
+        <li>
+          Powercat Motorsports. (n.d.). Description of Events at Competitions. 
+          URL: https://www.k-state.edu/powercatmotorsports/competitions/description-of-events.html
+        </li>
+         <li>
+          Rouelle, C. (n.d.). Race Car Engineering Seminar & Consulting. OptimumG.
+        </li>
+        <li>
+          Rill, G., Castro, A. A. (2020). Road Vehicle Dynamics, Fundamentals and Modelling with MATLAB®. Taylor & Francis
+          Group.
+        </li>
+        <li>
+          Seward, D. (2014). Race Car Design.
+        </li>
+      </ul>
+    </div>
+    <sl-divider></sl-divider>
+    <div id="Declaration">
+      <h2>Declaration</h2>
+      <p>
+        I declare that this report is my own work and that all sources of information have been
+        acknowledged by means of reference. I have not submitted this report, or any part of it,
+        for assessment to any other university or institution. Total word count: 3000 words.
+      </p>
+      <p>
+        AI Usage Declaration: I declare that I have used AI tools in the preparation of this report.
+        ChatGPT 4.0 was used to assist in improving the grammar and sentence structure of certain paragraphs.
+        CoPilot was used to generate boilerplate code for HTML components and for generative text suggestions.
+      </p>
+    </div>
+    
+  </div>
+
+  <!-- This is the code to display the scroll to top button for ergonomic -->
+  <!-- You can leave it as it is, or if you don't like its aesthetics you can also just delete it, -->
+  <!-- but it might reduce the user experience. -->
+  <sl-button class="scroll-to-top" variant="primary" size="medium" circle onclick="scrollToTop()">
+    <sl-icon name="arrow-up" label="Settings"></sl-icon>
+  </sl-button>
+
+  <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+  <script type="module" src="./components/table-component/table-component.js"></script>
+</body>
+
+</html>

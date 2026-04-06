@@ -2,549 +2,972 @@
 <html lang="en">
 
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>FTS-441</title>
   <link rel="icon" href="./favicon.ico" type="image/x-icon">
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/light.css" />
-  <script type="module"
-    src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace-autoloader.js"></script>
-
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace-autoloader.js"></script>
   <link rel="stylesheet" href="./index.css">
-
   <link rel="stylesheet" href="./components/team-member/team-member.css">
   <script type="module" src="./components/team-member/team-member.js"></script>
-
   <link rel="stylesheet" href="./components/table-of-content/table-of-content.css">
-
   <script type="module" src="./components/image/image-component.js"></script>
-
   <script type="module" src="./components/video/video.js"></script>
-
   <link rel="stylesheet" href="./components/references/references.css">
-
   <link rel="stylesheet" href="./components/scroll-to-top/scroll-to-top.css">
   <script src="./components/scroll-to-top/scroll-to-top.js"></script>
-
   <script src="./components/table-component/table-component.js"></script>
-
   <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
 </head>
 
 <body>
   <div class="content">
-    <h1 style=" text-align: center;">FTS-441 FSAE Vehicle Dynamics and Steering System Optimisation </h1>
-    <image-component tag="image" source="assets/NUS FSAE LOGO.jpg"
-          subtitle=""></image-component>
+    <h1 style="text-align: center;">FTS-441 FSAE Vehicle Dynamics and Steering System Optimisation</h1>
+    <image-component tag="image" source="assets/NUS FSAE LOGO.jpg" subtitle=""></image-component>
 
-    <!-- This is the team member component use to display details about your team members -->
     <div class="team-member-wrapper">
-      <team-member avatar="assets/Sam.jpg" name="Sam Nicholas Marrett" department="Mechanical Engineering with Second Major in IDP"
-        year="2025"></team-member>
+      <team-member
+        avatar="assets/Sam.jpg"
+        name="Sam Nicholas Marrett"
+        department="Mechanical Engineering with Second Major in IDP"
+        year="2026">
+      </team-member>
     </div>
-    
-    <!-- This is a divide from the shoelace library for aesthetic purpose -->
+
     <sl-divider></sl-divider>
 
-    <!-- This is the table-of-content component use to define all of the link directly to each section -->
+    <!-- ===================== TABLE OF CONTENTS ===================== -->
     <div class="table-of-content">
       <h2>Table of Contents</h2>
       <sl-tree>
+
+        <!-- 1. Introduction -->
         <sl-tree-item expanded>
           <a href="#Introduction">1. Introduction</a>
+          <sl-tree-item><a href="#Team Composition">1.1. Team Composition</a></sl-tree-item>
+          <sl-tree-item><a href="#R25e Post Competition Remarks">1.2. R25e Post Competition Remarks</a></sl-tree-item>
           <sl-tree-item>
-            <a href="#Team Composition">1.1. Team Composition</a>
+            <a href="#Team Goal & Problem Statement Analysis">1.3. Team Goal &amp; Problem Statement Analysis</a>
+            <sl-tree-item><a href="#Skidpad Competition Performance">1.3.1. Skidpad Competition Performance</a></sl-tree-item>
           </sl-tree-item>
-          <sl-tree-item>
-            <a href="#R25e Post Competition Remarks">1.2. R25e Post Competition Remarks</a>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#Team Goal & Problem Statement Analysis">1.3. Team Goal & Problem Statement Analysis</a>
-              <sl-tree-item>
-                <a href="#Skidpad Competition Performance">1.3.1. Skidpad Competition Performance</a>
-              </sl-tree-item>
-                <sl-tree-item>
-                  <a href="#Steering Feedback Analysis">1.3.2. Steering Feedback Analysis</a>
-                </sl-tree-item>               
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#The Problem Statement">1.4. The Problem Statement</a>
-          </sl-tree-item>
+          <sl-tree-item><a href="#The Problem Statement">1.4. The Problem Statement</a></sl-tree-item>
         </sl-tree-item>
 
+        <!-- 2. Suspension Design Optimisation -->
         <sl-tree-item expanded>
           <a href="#Suspension Design Optimisation">2. Suspension Design Optimisation</a>
           <sl-tree-item>
             <a href="#Suspension Stiffness">2.1. Suspension Stiffness</a>
-            <sl-tree-item>
-                <a href="#What Happens During Roll?">2.1.1. What Happens During Roll?</a>
-              </sl-tree-item>
-              <sl-tree-item>
-                <a href="#Droop and Bump Travel Analysis">2.1.2. Droop and Bump Travel Analysis</a>
-              </sl-tree-item>
+            <sl-tree-item><a href="#What Happens During Roll?">2.1.1. What Happens During Roll?</a></sl-tree-item>
+            <sl-tree-item><a href="#Droop and Bump Travel Analysis">2.1.2. Droop and Bump Travel Analysis</a></sl-tree-item>
           </sl-tree-item>
-          <sl-tree-item>
-            <a href="#Final Conclusion - Suspension Stiffness">2.2. Final Conclusion - Suspension Stiffness</a>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#Steering Torque Analysis">2.3. Steering Torque Analysis</a>
-              <sl-tree-item>
-                <a href="#Steering Ratio (SR)">2.3.1. Steering Ratio (SR)</a>
-              </sl-tree-item>
-              <sl-tree-item>
-                <a href="#King-Pin Inclination angle (σ)">2.3.2. King-Pin Inclination angle (σ)</a>
-              </sl-tree-item>
-          </sl-tree-item>
-          <sl-tree-item>
-            <a href="#Final Conclusion - Steering Torque Analysis">2.4. Final Conclusion - Steering Torque Analysis</a>
-          </sl-tree-item>
-        </sl-tree-item>
-        <sl-tree-item>
-          <a href="#Future Work & Additional Remarks">3. Future Work & Additional Remarks</a>
+          <sl-tree-item><a href="#Final Conclusion - Suspension Stiffness">2.2. Final Conclusion - Suspension Stiffness</a></sl-tree-item>
         </sl-tree-item>
 
-        <sl-tree-item>
-          <a href="#references">References</a>
+        <!-- 3. Cornering Dynamics Modelling -->
+        <sl-tree-item expanded>
+          <a href="#Cornering Dynamics Modelling">3. Cornering Dynamics Modelling</a>
+          <sl-tree-item>
+            <a href="#Equation of Motion">3.1. Equation of Motion</a>
+            <sl-tree-item><a href="#Steady-State Analysis">3.1.1. Steady-State Analysis</a></sl-tree-item>
+            <sl-tree-item><a href="#Transient Numerical Analysis">3.1.2. Transient Numerical Analysis</a></sl-tree-item>
+          </sl-tree-item>
+          <sl-tree-item><a href="#MoTeC Data Analysis">3.2. MoTeC Data Analysis</a></sl-tree-item>
         </sl-tree-item>
-        <sl-tree-item>
-          <a href="#Declaration">Declaration</a>
+
+        <!-- 4. Suspension Setup -->
+        <sl-tree-item expanded>
+          <a href="#Suspension Setup">4. Suspension Setup</a>
+          <sl-tree-item><a href="#Damping Roll Optimisation">4.1. Damping Roll Optimisation</a></sl-tree-item>
+          <sl-tree-item><a href="#Lateral Load Transfer Distribution">4.2. Lateral Load Transfer Distribution</a></sl-tree-item>
+          <sl-tree-item><a href="#Ride Analysis">4.3. Ride Analysis</a></sl-tree-item>
+          <sl-tree-item><a href="#R26e Test-Run Data and Validation">4.4. R26e Test-Run Data and Validation</a></sl-tree-item>
         </sl-tree-item>
+
+        <!-- 5. Steering System Assembly -->
+        <sl-tree-item expanded>
+          <a href="#Steering System Assembly">5. Steering System Assembly</a>
+          <sl-tree-item><a href="#Steering Rack Assembly">5.1. Steering Rack Assembly</a></sl-tree-item>
+          <sl-tree-item>
+            <a href="#Steering Shaft Assembly">5.2. Steering Shaft Assembly</a>
+            <sl-tree-item><a href="#Steering Brace">5.2.1. Steering Brace</a></sl-tree-item>
+            <sl-tree-item><a href="#Steering Column">5.2.2. Steering Column</a></sl-tree-item>
+          </sl-tree-item>
+          <sl-tree-item><a href="#Installation">5.3. Installation</a></sl-tree-item>
+        </sl-tree-item>
+
+        <!-- 6. Future Work -->
+        <sl-tree-item><a href="#Future Work & Additional Remarks">6. Future Work &amp; Additional Remarks</a></sl-tree-item>
+
+        <!-- Back matter -->
+        <sl-tree-item><a href="#references">References</a></sl-tree-item>
+        <sl-tree-item><a href="#Declaration">Declaration</a></sl-tree-item>
+        <sl-tree-item>
+          <a href="#Appendix">Appendix</a>
+          <sl-tree-item><a href="#Appendix A">Appendix A: Lateral Load Transfer Calculations</a></sl-tree-item>
+          <sl-tree-item><a href="#Appendix B">Appendix B: MoTeC Lateral Load Transfer Data</a></sl-tree-item>
+          <sl-tree-item><a href="#Appendix C">Appendix C: Damping Optimisation</a></sl-tree-item>
+          <sl-tree-item><a href="#Appendix D">Appendix D: Lateral Load Transfer Distribution</a></sl-tree-item>
+          <sl-tree-item><a href="#Appendix E">Appendix E: Ride Analysis</a></sl-tree-item>
+        </sl-tree-item>
+
       </sl-tree>
     </div>
-    <sl-divider></sl-divider>
 
+    <!-- ===================== SECTION 1: INTRODUCTION ===================== -->
     <div>
 
-      <!-- This is an example of what a section might look like -->
       <div id="Introduction">
         <h2>1. Introduction</h2>
+        <!-- Figure 1 -->
         <image-component tag="image" source="assets/fsae_ev.jpg"
-          subtitle="Image 1: FSAE EV Michigan 2025"></image-component><br>
+          subtitle="Figure 1: FSAE Electric Vehicle at Michigan 2025"></image-component><br>
         <p>
-         Formula SAE (FSAE) is a intercollegiate competitions held by Society of Automotive Engineers 
-         (SAE) International, where universities design, manufacture, build and race formula-style race cars. 
-          Each car will be judged on its design, cost, efficiency, and performance through a series of dynamic 
-          and static events, as well as its compliance with safety during technical inspection. Team members 
-          will also be judged on their capabilities in team management, design thinking, technical knowledge, 
-          and engineering practices. 
+          Formula SAE (FSAE) is an intercollegiate engineering design competition organised by the Society of
+          Automotive Engineers International, in which university teams design, manufacture, and race
+          formula-style vehicles. Each car is evaluated on its design, cost, efficiency, and performance across a
+          series of dynamic and static events, as well as its compliance with safety regulations during technical
+          inspection. Competitors are additionally assessed on their team management, engineering judgement,
+          technical knowledge, and design process.
         </p>
       </div>
 
       <div id="Team Composition">
         <h3>1.1. Team Composition</h3>
+        <!-- Figure 2 -->
         <image-component tag="image" source="assets/Departments.png"
-          subtitle="Image 2: NUS FSAE department chart"></image-component><br>
+          subtitle="Figure 2: NUS FSAE R26e Organisational Department Chart"></image-component><br>
         <p>
-          R26e has a total of 27 members from various departments. The team is mainly split into 2 core principals, Powertrain
-          and Chassis. Each principal is further divided into departments that focus on specific areas of the car's design.
-
+          The R26e team consists of 27 members drawn from a range of engineering disciplines. The team is
+          primarily divided into two core technical principals — Powertrain and Chassis — each of which is
+          further subdivided into specialist departments responsible for specific areas of the vehicle's design
+          and development.
         </p>
       </div>
 
       <div id="R25e Post Competition Remarks">
         <h3>1.2. R25e Post Competition Remarks</h3>
+        <!-- Figure 3 -->
         <image-component tag="image" source="assets/NUS 7th.jpg"
-          subtitle="Image 3: NUS FSAE R25e 7th Overall"></image-component><br>
+          subtitle="Figure 3: NUS FSAE R25e Finishing 7th Overall at FSAE Electric Michigan 2025"></image-component><br>
         <p>
-          R25e achieved the highest overall standing of 7th place in the 2025 Formula SAE Electric competition held in
-          Michigan, USA. We were able to secure top 10th position in most events, which demonstrated the car's well-rounded
-          performance. However, there were areas for improvement, particularly in the dynamic events, where we
-          faced challenges with handling and reliability. One of the main issues identified was the car's
-          battery management system (BMS), which had overheating issues during all testing and competition runs.
-          This not only affected the car's performance but also raised safety concerns. Additionally, the handling
-          characteristics of the car were not optimal, leading to repeated oversteer.
-          
+          R25e achieved its highest-ever overall standing of 7th place at the 2025 Formula SAE Electric
+          competition in Michigan, USA. The team secured a top-10 finish in the majority of events,
+          demonstrating a well-rounded level of performance. Nevertheless, several areas for improvement were
+          identified, particularly in the dynamic events, where the team encountered challenges related to
+          handling consistency and system reliability. A key issue was the battery management system,
+          which exhibited thermal overheating during testing and competition runs, compromising both performance
+          and safety. In addition, the vehicle's handling characteristics were suboptimal, with recurring
+          oversteer tendencies observed throughout the season.
         </p>
       </div>
+
       <div id="Team Goal & Problem Statement Analysis">
-        <h3>1.3. Team Goal & Problem Statement Analysis</h3>
+        <h3>1.3. Team Goal &amp; Problem Statement Analysis</h3>
         <p>
-          The Team Goal for the R26e season is to reduce the average lap time in the Endurance event by 10% through
-          improved reliability. To support this goal, the V.D. Suspension department has set a specific objective to enhance 
-          the car's handling characteristics. To better understand the handling issues, a comprehensive vehicle dynamics analysis 
-          will be conducted on the R25e competition and testing data. The analysis will focus on identifying the root causes of the 
-          handling problems. 
-            
+          The overarching team goal for the R26e season is to reduce the average lap time in the Endurance event
+          by 10% through improved system reliability. In support of this goal, the Vehicle Dynamics
+          Suspension department has established a specific objective to enhance the car's handling
+          characteristics. To better understand the root causes of the observed handling issues, a comprehensive
+          vehicle dynamics analysis was conducted using R25e competition and testing data.
         </p>
+
         <div id="Skidpad Competition Performance">
-              <h4>1.3.1. Skidpad Competition Performance</h4>
-              <image-component tag="image" source="assets/Skidpad Layout.jpg"
-              subtitle="Image 4: skidpad layout (Powercat Motorsports, n.d.)"></image-component><br>
-              <p> 
-                The goal of the Skid Pad event is to measure the vehicle’s maximum cornering capability by measuring the total 
-                time required for the vehicle to complete one left hand and one right hand circle.  The event is designed to 
-                focus on the vehicle’s suspension design characteristics and tune-ability for maximum lateral grip and minimise 
-                the effect of driver reflexes during transitional manoeuvres (Goslawski, Snyder, 2023).
-              </p>
-              <image-component tag="image" source="assets/GG competition skidpad scatter plot.png"
-              subtitle="Image 5: G-G plot of competiton skidpad stint"></image-component><br>
-              <p> 
-                Skidpad performance can be evaluated on the G-G plot of the vehicle's lateral acceleration 
-                against longitudinal acceleration during the event. The skidpad tests the vehicle's steady-state cornering
-                capabilities, which is represented by minimal variance in lateral acceleration throughout the run. From the G-G 
-                plot above from the competition skidpad, it is evident that the vehicle experienced significant fluctuations in 
-                lateral acceleration during, both the left and right. This indicates that the vehicle was unable to maintain a 
-                consistent cornering force, loosing lap time potential and indicating handling issues.
-              </p>
-        </div>
-        <div id="Steering Feedback Analysis">
-              <h4>1.3.2. Steering Feedback Analysis</h4>
-              <p> 
-                Steering feedback is a critical aspect of vehicle handling, as it provides the driver with information 
-                about the limit of grip and the vehicle's behaviour during cornering. However, too much feedback can lead to
-                driver fatigue and reduced control over the vehicle. In the case of R25e, drivers reported excessive steering 
-                feedback during slow speed manoeuvres, which could be attributed to the suspension geometry and setup. Some
-                complains included: the steering felt heavy at low speeds, making it difficult to navigate tight corners;
-                after half my Endurance stint, my arms were exhausted from fighting the steering wheel; the car was difficult to
-                control after extensive turning, leading to understeer and loss of control.
-              </p>
-              <image-component tag="image" source="assets/Driver Evalution scatter plot 1.png"
-              subtitle="Image 6: Steering Angle vs Vehicle Speed, Driver Evaluation"></image-component><br>
-              <p>
-                Image 6 represents the driver evaluation done in Singapore before competition. Driver evaluation is a crucial
-                test to decide the best driver for the endurance event, 11km of continuous driving. This data is taken from
-                the driver chosen for endurance event. The plot above shows the relationship between steering angle and vehicle 
-                speed. The scatter plot in red and the corresponding red bar is his fastest lap, while the other scatter points represent 3 of his slower laps
-                that occurred in the second half of his stint. From the plot, it is evident that he is consistently steering under
-                the optimal steering range. This indicates that the driver is unable to exert optimal steering inputs to the car.
-              </p>
-              <image-component tag="image" source="assets/Driver Evalution scatter plot 2.png"
-              subtitle="Image 7: Brake Pressure vs Vehicle Speed, Driver Evaluation: Good Example "></image-component><br>
-              <p>
-                To understand the full extent of the driver's struggle, we can also look at the relationship between 
-                brake pressure and vehicle speed. Similarly, the scatter plot in red represents his fastest lap, while 
-                the other scatter points represent 3 laps with fast lap times, which occurred in the start of his stint.
-                From the plot, it is evident that the driver was able to apply consistent brake pressure inputs, demonstrating
-                assets of a skilled endurance driver.
-              </p>
-              <image-component tag="image" source="assets/Driver Evalution scatter plot 3.png"
-              subtitle="Image 8: Brake Pressure vs Vehicle Speed, Driver Evaluation: Bad Example "></image-component><br>
-              <p> 
-                Now comparing with the scatter plots from his slower laps in the second half of his stint, we can see a
-                significant increase in the variance of brake pressure inputs at irregular vehicle speeds. This indicates that
-                the driver was struggling to make precise brake inputs, likely due to poor judgment as a result of fatigue.
-              </p>
+          <h4>1.3.1. Skidpad Competition Performance</h4>
+          <!-- Figure 4 -->
+          <image-component tag="image" source="assets/Skidpad Layout.jpg"
+            subtitle="Figure 4: Skidpad Event Layout (Powercat Motorsports, n.d.)"></image-component><br>
+          <p>
+            The Skidpad event measures a vehicle's maximum steady-state cornering capability by recording the
+            total time taken to complete one left-hand and one right-hand circle. The event is specifically
+            designed to evaluate suspension characteristics and tune-ability for maximum lateral grip while
+            minimising the influence of driver inputs during transitional manoeuvres (Goslawski, Snyder, 2023).
+          </p>
+          <!-- Figure 5 -->
+          <image-component tag="image" source="assets/GG competition skidpad scatter plot.png"
+            subtitle="Figure 5: G-G Diagram of Lateral vs. Longitudinal Acceleration During Competition Skidpad Event"></image-component><br>
+          <p>
+            Skidpad performance can be assessed using a G-G diagram, which plots lateral acceleration against
+            longitudinal acceleration throughout the run. Since the skidpad tests steady-state cornering, an
+            ideal run would exhibit minimal variance in lateral acceleration. However, as shown in Figure 5, the
+            vehicle experienced significant fluctuations in lateral acceleration during both the left-hand and
+            right-hand circles. This inconsistency indicates that the vehicle was unable to sustain a constant
+            cornering force, resulting in lost lap time potential and confirming the presence of handling issues.
+          </p>
         </div>
       </div>
+
       <div id="The Problem Statement">
         <h3>1.4. The Problem Statement</h3>
         <p>
-          The skidpad performance is inconsistent, with significant fluctuations in lateral acceleration during 
-          cornering. Moreover, the lack of driver's authority over the car has induced high driver fatigue, 
-          resulting in poor decision making and inconsistent lap times during the endurance event. 
-          This has been identified as critical issues that needs to be addressed to improve the overall performance 
-          of the vehicle. 
-    </div>
+          The skidpad performance data reveals significant fluctuations in lateral acceleration during cornering,
+          suggesting an underlying handling instability. This report investigates lateral load transfer
+          characteristics and suspension dynamics to identify the root cause of these issues and propose
+          targeted design modifications for R26e.
+        </p>
+      </div>
 
+    </div>
 
     <br />
     <br />
     <sl-divider></sl-divider>
-    <div>
-      <div id="Suspension Design Optimisation">
-        <h2>2. Suspension Design Optimisation</h2>
+
+    <!-- ===================== SECTION 2: SUSPENSION DESIGN OPTIMISATION ===================== -->
+    <div id="Suspension Design Optimisation">
+      <h2>2. Suspension Design Optimisation</h2>
+      <p>
+        The dynamic behaviour of a vehicle can be characterised by two primary performance attributes:
+        <em>Roadholding</em> and <em>Handling</em>. Roadholding refers to the vehicle's ability to maintain
+        consistent tyre contact with the road surface by managing vertical motion along the z-axis (heave) and
+        rotational motion about the y-axis (pitch) (Pütz, Serné, 2025). Handling, on the other hand,
+        describes the lateral dynamics of the vehicle — specifically, its ability to negotiate corners quickly
+        and with stability (Pütz, Serné, 2025).
+      </p>
+      <!-- Figure 6 -->
+      <image-component tag="image" source="assets/car axis.jpg"
+        subtitle="Figure 6: SAE Vehicle Axis Convention (Pütz, Serné, 2025)"></image-component><br>
+    </div>
+
+    <div id="Suspension Stiffness">
+      <h3>2.1. Suspension Stiffness</h3>
+      <p>
+        R25e was configured with a high suspension spring rate of 300 lb/in at both axles.
+        While high spring rates are commonly employed to reduce body roll and improve cornering responsiveness,
+        they do so at the expense of roadholding compliance. Under typical FSAE Michigan competition conditions
+        — where the track surface is smooth and well-maintained — stiffer suspension setups are generally
+        acceptable. However, the analysis presented in this section suggests that the high spring rates used on
+        R25e may have contributed to the handling inconsistencies observed during dynamic events. To investigate
+        this further, the following sections examine the vehicle's roll dynamics and damper travel behaviour.
+      </p>
+      <!-- Figure 7 -->
+      <image-component tag="image" source="assets/fsae_ev_25_04493.jpg"
+        subtitle="Figure 7: Track Surface Condition at FSAE Michigan 2025"></image-component><br>
+
+      <div id="What Happens During Roll?">
+        <h4>2.1.1. What Happens During Roll?</h4>
+        <!-- Figure 8 -->
+        <image-component tag="image" source="assets/OptimumG Roll Diagram.jpg"
+          subtitle="Figure 8: Vehicle Roll Diagram Illustrating Bump and Droop Travel (Rouelle, n.d.)"></image-component><br>
         <p>
-          Dynamic behaviour of a vehicle can be described by 2 main terms: Roadholding and Handling. Roadholding 
-          refers to the vehicle's ability to maintain contact with the road surface, by controlling lifting movements
-          along the vertical axis (z-axis), such as heave, or a rotational movement around the lateral axis (y-axis), such as pitch (Pütz, Serné, 2025).
-          Handling, on the other hand, refers to the lateral dynamicis and thus describes the ability of a vehicle to
-          drive around a corner quickly and stably (Pütz, Serné, 2025).
+          During cornering, the lateral centrifugal force acting at the vehicle's centre of gravity (CG) induces
+          a rolling moment about the roll centre. This roll motion causes the outer suspension to compress (bump
+          travel) and the inner suspension to extend (droop travel). If the droop travel limit is reached before
+          sufficient cornering force is generated, the inner wheel lifts off the ground, resulting in a complete
+          loss of traction and reduced lateral stability at that axle.
         </p>
-        <image-component tag="image" source="assets/car axis.jpg"
-          subtitle="Image 9: SAE Car Axis (Pütz, Serné, 2025) "></image-component><br>
-      </div>
-      <div id="Suspension Stiffness">
-        <h3>2.1. Suspension Stiffness</h3>
-        <p>
-          R25e ran a high suspension spring stiffness rate of 300 lb/in (52.4 N/mm) at both axles.
-          High spring rates are typically used to reduce body roll and improve responsiveness during cornering, 
-          sacrificing the vehicle's roadholding capabilities. Typically for a FSAE Michigan competition track, the conditions
-          are smooth and well-maintained, allowing for the use of stiffer suspension setups. However, in the case of R25e, 
-          the high spring rates may have contributed to the handling issues. To better understand the impact of suspension stiffness,
-          I will be analysing on suspension roll dynamics.
-        </p>
-        <image-component tag="image" source="assets/fsae_ev_25_04493.jpg"
-          subtitle="Image 10: FSAE Michigan 2025 track condition"></image-component><br>
-          <div id="What Happens During Roll?">
-            <h4>2.1.1. What Happens During Roll?</h4>
-            <image-component tag="image" source="assets/OptimumG Roll Diagram.jpg"
-            subtitle="Image 11: Roll Diagram (Rouelle, n.d.)"></image-component><br>
-            <p> 
-              During cornering, the centrifugal force acting on the vehicle center of gravity causes the vehicle 
-              to roll about its roll center. This roll motion results in the compression of the suspension on the outer wheels
-              (bump travel) and the extension of the suspension on the inner wheels (droop travel). Once the limit of suspension 
-              travel is reached, the inner wheel will lift off the ground, resulting in a loss of traction and stability.
-            </p>
-          </div>
-          <div id="Droop and Bump Travel Analysis">
-            <h4>2.1.2. Droop and Bump Travel Analysis</h4>
-            <image-component tag="image" source="assets/Spring Compression Analysis.jpg"
-            subtitle="Table 1: Excel Calculation of Spring Compression"></image-component><br>
-            <p>
-              After performing calculations on the suspension spring compression. It was found that the 300 lb/in 
-              suspension springs were only compressing by 10.223 mm under static loading conditions. That results 
-              in a 10.223 mm available droop travel and a remaining 46.777 mm of bump travel. The total stroke is
-              57 mm, which is the maximum travel of the Ohlins TTX25 MKll shock absorbers used in R25e and R26e.
-            </p>
-            <image-component tag="image" source="assets/Skidpad Competition linear pod.png"
-            subtitle="Image 12: Damper travel of Left and Right Rear Tyres vs Average Lateral Acceleration during Competition Skidpad Event"></image-component><br>
-            <p>
-              The data above represents the damper travel of the left and right rear tyres during the competition skidpad event.
-              From the plot, droop travel is represented by positive damper travel values, while bump travel is represented by 
-              negative damper travel values. It is evident that the damper travels an estimated maximum of 8 mm in bump travel while
-              it can only travel a maximum of 6 mm in droop travel. Not much can be inferred from this plot since the 
-              car was not driven hard enough to visualise any anomalies in the damper travel. Hence, I will be analysing
-              the damper travel during autocross, where the car was driven more aggressively.
-            </p>
-            <image-component tag="image" source="assets/AutoX Competition linear pod.png"
-            subtitle="Image 13: Damper travel of Left and Right Rear Tyres vs Average Lateral Acceleration during Competition Autocross Event"></image-component><br>
-            <p>
-              From the competition autocross data above, we can see that the droop travel for both left and right rear tyres
-              is blocked by an invisible line at 6 mm of damper travel, whereas the bump travel is hitting an estimated maximum of 12
-              mm of damper travel. This indicates that the suspension droop travel limit is at 6 mm, and the limit of 
-              the damper travel has been hit for both autocross and skidpad events. This is a clear indication that the suspension
-              setup is too stiff, causing the inner wheel to lift off the ground during cornering as the damper is unable to
-              extend any further.
-            </p>
-          </div>
-       
-      </div>
-      <div id="Final Conclusion - Suspension Stiffness">
-        <h3>2.2. Final Conclusion - Suspension Stiffness</h3>
-        <p>
-          This is a tricky topic to conclude, as the trade-offs of changing suspension stiffness are very
-          significant to the handling and roadholding characteristics of the vehicle. From the analysis above,
-          it is evident that the inner tyre is lifting off the ground during cornering due to the limited droop 
-          travel of the suspension.
-        </p>
-        <image-component tag="image" source="assets/Dyanmic Tyre Load Changes.jpg"
-            subtitle="Image 14: Dyanmics Tyre Load Changes Effects on Overall Lateral Grip (Frömming, 2023)"></image-component><br>
-        <p>
-          In theory when dynamic load changes occur, it is expected that the overall lateral grip of the axle will
-          decrease due to the non-linear characteristics of tyre grip. As shown in the image above, when a 4 kN of
-          load difference occurs, the lateral force at that axle decreases against the ideal average lateral force
-          when there is no load difference between left and right tyre. For a racing car, it is expected to keep
-          the wheel load changes that occur as low as possible to achieve the best driving performance (Frömming, 2023).
-          When the inner wheel lifts off the ground, it results in 100% load transfer on that axle.
-        </p>
-        <p>
-          In rally cars, it is common practice to lift the inner rear wheel off the ground during hard cornering. 
-          For a Front Wheel Drive (FWD) car, this technique is used to maximise the 
-          traction of the driven wheels by lifting the inner rear wheel off the ground, allowing the outer rear wheel 
-          to overload and yaw the car. However, for a Rear Wheel Drive (RWD) car like R25e and R26e, it is unclear
-          the effects of lifting the inner rear wheel off the ground.
-        </p>
-        <p>
-          For the R26e, the suspension spring rates will be reduced to 225 lb/in (39.3 N/mm) at the front and 200 lb/in 
-          (34.9 N/mm) at the rear. This change is expected to increase the droop travel of the suspension, allowing
-          for more droop travel allowance for dynamic events. For the difference in spring rates,
-          the front suspension will be stiffer for more turn-in response in corners and control oversteer characteristics
-          during bumps. The rear suspension will be relatively softer to increase mechanical grip and 
-          minimise contact patch variation, which is important for the driven wheels. However, the drawbacks of 
-          softening both front and rear axles are increased body roll during cornering and reduced responsiveness,
-          which changes the handling of the car drastically.
-        </p>
-        <p>
-          Thorough testing and validation are required before we can assess whether this modification effectively 
-          minimises lateral acceleration variations observed during the skidpad event and improves vehicle handling 
-          performance.
-        </p>
-       
       </div>
 
-      <div id="Steering Torque Analysis">
-        <h3>2.3. Steering Torque Analysis</h3>
-        <image-component tag="image" source="assets/Steering diagram.jpg"
-          subtitle="Image 15: Steering System Diagram (Rill, Castro, 2020)"></image-component><br>
+      <div id="Droop and Bump Travel Analysis">
+        <h4>2.1.2. Droop and Bump Travel Analysis</h4>
+        <!-- Table 1 -->
+        <image-component tag="image" source="assets/Spring Compression Analysis.jpg"
+          subtitle="Table 1: Static Spring Compression Calculations (Excel)"></image-component><br>
         <p>
-          The steering assembly can be analysed from the rack and pinion mechanism above. The steering torque from the 
-          driver overcomes the resistive torque from the tyre-road interaction and the frictional losses in the steering 
-          system.
+          Static spring compression calculations revealed that the 300 lb/in springs compress by only 10.223 mm
+          under static loading conditions. This leaves 10.223 mm of available droop travel and 46.777 mm of
+          remaining bump travel, against a total shock stroke of 57 mm — the maximum travel of the
+          Ohlins TTX25 MkII dampers used on both R25e and R26e.
         </p>
-        <image-component tag="image" source="assets/steering torque equation.jpg"
-          subtitle="Image 16: Steering Torque Derived Equation (Rill, Castro, 2020)"></image-component><br>
-          <p>
-            The steering torque equation above represents the resistive load that the driver must overcome to maintain
-            a constant steering angle in a corner. From the equation, we can see that the resistive torque is directly proportional 
-            to the generalised steering ratio (i). This value (i) is inversely proportional to the steering ratio (SR) of the vehicle, 
-            which is defined as the ratio between the steering wheel angle and the road wheel angle. The other components of the
-            equation represent the tyre forces and geometry.
-          </p>
-          <image-component tag="image" source="assets/Table 1.png"
-          subtitle="Table 2: Parameters of Steering Effort (Milliken, Milliken, 1995)"></image-component><br>
-          <p>
-            From Table 2, I will be focusing on the steering ratio (SR) and the King-Pin Inclination angle (σ) as the main factors that
-            changed between R25e and R26e. The other parameters are changes due to packaging constraints and engineering 
-            trade-offs outside of the steering system, and thus will not be discussed in this analysis.
-          </p>
-            <div id="Steering Ratio (SR)">
-              <h4>2.3.1. Steering Ratio (SR)</h4>
-              <p>
-                From Table 2, the steering ratio (SR) of R26e is higher than R25e, increasing from 4.577 to 4.902 on the inner wheel, and
-                from 4.644 to 6.213 on the outer wheel. This change in steering ratio results in a decrease in the generalised 
-                steering ratio (i), leading to a reduction in the resistive steering torque that the driver must overcome.
-              </p>
-              
-              <image-component tag="image" source="assets/OPTK Steering Graph.png"
-              subtitle="Image 17: OptimumKinematics Steering Ratio Plot - Steering Ratio vs Steering Motion"></image-component><br>
-              <p>
-                The steering ratio (SR) is obtained from the OptimumKinematics software, which is used for suspension 
-                and steering kinematics. The plot above in red is the steering ratio of R26e which is greater than the 
-                steering ratio of the R25e. The graph is plotted over a range of steering motion from 0° to 120° steering wheel input
-                and the steering ratio is averaged over the left and right wheels.
-              </p>
-            </div>
-            <div id="King-Pin Inclination angle (σ)">
-              <h4>2.3.2. King-Pin Inclination angle (σ)</h4>
-              <p>
-                Apart from steering ratio, the King-Pin Inclination angle (σ), also plays a significant role in the steering
-                resistive torque. From Table 1, we can see that the King-Pin Inclination angle (σ) has decreased from 
-                11.7° in R25e to 8° in R26e.
-              </p>
-              <image-component tag="image" source="assets/TG Equation.jpg"
-              subtitle="Image 18: Moment Equation for Tyre Moment due to Verticle Load (Gillespie, 2021)"></image-component><br>
-              <image-component tag="image" source="assets/TG Image.jpg"
-              subtitle="Image 19: Tyre Diagram for Tyre Moment due to Verticle Load (Gillespie, 2021)"></image-component><br>
-              <p>
-                The vertical force component (Fz) acting on lateral inclination angle/ King-Pin Inclination angle (σ), results
-                in a sine angle force component (Fz x sinσ), which nominally acts laterally on the moment arm, scrub radius (s)
-                multiplied by sine of steering angle (sinδ). This moment is initially zero at zero steering angle and increases
-                the resistive torque as the steering angle increases (Gillespie, 2021). 
-              </p>
-              <p>
-                From a suspension geometry perspective, introducing high King-Pin Inclination angle (σ) will increase the lift 
-                or jacking effect during cornering on both tyres (Derek, 2015). This jacking effect is felt by the driver as 
-                an additional steering torque needed to lift an effective component of the vehicle's weight as steering angle 
-                increases.
-              </p>
-            </div>
-      </div>
-      <div id="Final Conclusion - Steering Torque Analysis">
-        <h3>2.4. Final Conclusion - Steering Torque Analysis</h3>
+        <!-- Figure 9 -->
+        <image-component tag="image" source="assets/Skidpad Competition linear pod.png"
+          subtitle="Figure 9: Rear Damper Travel (Left and Right) vs. Lateral Acceleration — Competition Skidpad Event"></image-component><br>
         <p>
-          For this iteration of R26e, I aimed for a steering ratio (SR) that is approximately in the range of R25e and
-          R24e to balance between steering responsiveness and steering effort. From the comments of the drivers over
-          the three batches, despite the fatigue from the endurance event, they were content with the steering
-          responsiveness due to the high steering ratio (SR) implemented. 
+          Figure 9 shows the rear damper travel recorded during the competition skidpad event. In this plot,
+          positive damper travel values correspond to droop (extension), while negative values correspond to bump
+          (compression). The data indicates a maximum bump travel of approximately 8 mm and a maximum droop
+          travel of approximately 6 mm. As the car was not driven at the limit during this event, no critical
+          anomalies in damper behaviour are apparent. For a more informative assessment, the autocross data —
+          where the vehicle was driven more aggressively — is examined below.
         </p>
+        <!-- Figure 10 -->
+        <image-component tag="image" source="assets/AutoX Competition linear pod.png"
+          subtitle="Figure 10: Rear Damper Travel (Left and Right) vs. Lateral Acceleration — Competition Autocross Event"></image-component><br>
         <p>
-          For R26e, a different approach was taken to raise Ackermann percentage by inducing a higher difference in 
-          steering ratio (SR) between the inner and outer wheels. The effect of this change is uncertain until
-          testing and validation is done, but it is expected to improve the turn-in response of the FSAE car during
-          cornering as the Ackermann effect is significant in racing series with low cornering speeds (Milliken, Milliken, 1995).
-        </p>
-        <p>
-          As for King-Pin Inclination angle (σ), I am addressing the heavy steering feedback at low speeds. Corners
-          that require low speeds tend to be hairpins in the FSAE track that require significant steering input.
-          By reducing the King-Pin Inclination angle (σ), the jacking effect during cornering is reduced, leading to
-          a lighter steering effort for the driver.
-        </p>
-        <p>
-          All in all, after calculating the steering moment needed to overcome the resistive torque from the tyre-road 
-          interaction, the normalised steering torque for R26e is approximately 77.3% of R25e. The assumptions made
-          are that the tyre forces and moments remain the same between R25e and R26e, which is reasonable since 
-          both cars used the same tyre compound and size. However, the accuracy can be improved by conducting physical 
-          testing and improving our tyre model to produce combined slip characteristics that are more representative of
-          a real FSAE car.
-        </p>
-        <p>
-          The biggest change was the steering ratio (SR), which will reduce the steering responsiveness of the car.
-          The trade-off is worth the risk to improve the precision of driver inputs during long stints.
-        </p>
-        <p>
-          By addressing the steering feedback, I am directly reducing driver fatigue during long endurance stints.
-          This will allow the driver to maintain better control over the car and make more precise inputs, leading to
-          improved handling and lap times. 
+          The autocross damper travel data in Figure 10 reveals a consistent ceiling in droop travel at
+          approximately 6 mm for both the left and right rear dampers, while bump travel reaches a maximum of
+          approximately 12 mm. The hard plateau in droop travel confirms that the dampers are reaching their
+          full extension limit during cornering. This is a clear indicator that the suspension spring rates are
+          too high, restricting the available droop travel and causing the inner rear wheel to lift off the
+          ground once the droop limit is reached.
         </p>
       </div>
     </div>
-    
+
+    <div id="Final Conclusion - Suspension Stiffness">
+      <h3>2.2. Final Conclusion - Suspension Stiffness</h3>
+      <p>
+        The trade-offs associated with modifying suspension spring rates are significant and must be carefully
+        considered. The analysis presented above provides clear evidence that the inner tyre is lifting off the
+        road surface during cornering, a direct consequence of insufficient droop travel caused by the high
+        spring rates.
+      </p>
+      <!-- Figure 11 -->
+      <image-component tag="image" source="assets/Dyanmic Tyre Load Changes.jpg"
+        subtitle="Figure 11: Effect of Dynamic Tyre Load Variation on Total Axle Lateral Grip (Frömming, 2023)"></image-component><br>
+      <p>
+        As illustrated in Figure 11, dynamic load transfer between the inner and outer tyres reduces the
+        overall lateral force capacity of the axle due to the non-linear relationship between vertical tyre
+        load and lateral grip. When a 4 kN load differential is present, the combined lateral force of the
+        axle falls below the theoretical value achievable under equal loading. For a racing application, it is
+        therefore desirable to minimise dynamic load variation across each axle (Frömming, 2023). When the
+        inner wheel fully lifts off the ground, the entire axle load is transferred to the outer tyre, causing
+        100% lateral load transfer — the worst-case scenario for cornering performance.
+      </p>
+      <p>
+        In rally motorsport, deliberately lifting the inner rear wheel during hard cornering is an established
+        technique. For front-wheel drive vehicles, this is used to increase the yaw rate by overloading
+        the outer rear tyre and rotating the car into the corner. However, for a rear-wheel drive
+        platform such as R25e and R26e, the consequences of inner rear wheel lift on traction and stability are
+        less predictable and warrant further investigation.
+      </p>
+      <p>
+        For R26e, the suspension spring rates have been revised to 225 lb/in at the front axle and
+        200 lb/in at the rear axle. This reduction is intended to increase the available droop
+        travel, thereby reducing the likelihood of inner wheel lift during dynamic events. The front axle
+        retains a higher spring rate than the rear to preserve responsive turn-in behaviour and to manage
+        oversteer during bump inputs. The softer rear spring rate is intended to increase mechanical grip and
+        reduce contact patch variation — particularly important for the driven wheels. The principal trade-off
+        of this change is an increase in body roll and a reduction in overall cornering stiffness, both of
+        which will need to be carefully managed through suspension geometry and damper tuning.
+      </p>
+      <p>
+        Comprehensive testing and validation will be required to confirm whether these modifications
+        successfully reduce the lateral acceleration fluctuations observed during the R25e skidpad event and
+        result in a measurable improvement in overall vehicle handling.
+      </p>
+    </div>
+
+    <!-- ===================== SECTION 3: CORNERING DYNAMICS MODELLING ===================== -->
+    <div id="Cornering Dynamics Modelling">
+      <h2>3. Cornering Dynamics Modelling</h2>
+      <p>
+        Understanding how loads are distributed across individual wheels is fundamental to analysing and
+        optimising vehicle performance. Wheel loads directly govern a car's maximum steady-state cornering
+        capability and are therefore a critical consideration in both the design and setup phases. While wheel
+        loads are inherently dynamic and continuously changing in response to road conditions, driver inputs,
+        and suspension behaviour, quasi-static assumptions provide a tractable framework for calculating these
+        loads in a structured and interpretable manner — offering valuable insight into their magnitude,
+        distribution, and sensitivity to design parameters (Milliken, Milliken, 1995).
+      </p>
+
+      <div id="Equation of Motion">
+        <h3>3.1. Equation of Motion</h3>
+        <p>
+          The equation of motion governing the roll dynamics of the vehicle in steady-state cornering is
+          expressed as:
+          \( I_x \ddot{\phi} + C_\phi \dot{\phi} + K_\phi \phi = M_{roll} \),
+          where \( I_x \) is the mass moment of inertia of the sprung mass about the longitudinal (roll) axis,
+          \( C_\phi \) is the equivalent roll damping coefficient, \( K_\phi \) is the total roll stiffness,
+          \( \phi \) is the vehicle roll angle, and \( M_{roll} \) is the roll moment induced by lateral
+          acceleration during cornering.
+        </p>
+        <!-- Figure 12 -->
+        <image-component tag="image" source="assets/FYP_R26einertia.png"
+          subtitle="Figure 12: Sprung Mass Moment of Inertia Extracted from SolidWorks CAD Model" style="margin-top: 30px;"></image-component><br>
+        <p>
+          The mass moment of inertia \( I_x \) is extracted from the vehicle's CAD model in SolidWorks, which
+          provides an estimated representation of the geometry and mass distribution of the sprung components.
+          It is important to exclude the unsprung mass from this calculation, as the unsprung components
+          do not participate in the roll dynamics of the sprung body. Including the unsprung mass would result
+          in an overestimation of the roll inertia and introduce error into the dynamic model.
+        </p>
+        <!-- Figure 13 -->
+        <image-component tag="image" source="assets/FYP_racecartechfig5.18.png"
+          subtitle="Figure 13: Derivation of Roll Stiffness and Roll Damping (Frömming, 2023)" style="margin-top: 30px;"></image-component><br>
+        <p>
+          The roll stiffness \( K_\phi \) and roll damping coefficient \( C_\phi \) are derived from the
+          suspension geometry together with the spring, damper, and anti-roll bar (ARB) rates. Assuming a
+          motion ratio of 1, the spring roll stiffness is given by
+          \( K_{\phi,\text{spring}} = \frac{K_{\text{spring}} \cdot t^2}{2} \), and the roll damping
+          coefficient is given by \( C_{\phi} = \frac{C_{\text{damper}} \cdot t^2}{2} \), where \( t \) is
+          the track width of the vehicle. Since the ARB acts in parallel with the spring roll stiffness, the
+          total roll stiffness is expressed as
+          \( K_{\phi,\text{total}} = K_{\phi,\text{spring}} + K_{\phi,\text{ARB}} \).
+        </p>
+
+        <div id="Steady-State Analysis">
+          <h4>3.1.1. Steady-State Analysis</h4>
+          <p>
+            During cornering, the centrifugal force acting at the vehicle's centre of gravity generates a
+            rolling moment about the roll centre. This moment is resisted by the suspension at both axles,
+            distributing the roll angle across the chassis in proportion to each axle's roll stiffness and the
+            torsional rigidity of the chassis structure. The steady-state roll angle distribution is determined
+            by assembling and solving a stiffness and load matrix in MATLAB:
+          </p>
+
+          <div class="eq-box">
+            \[
+              \text{Stiffness Matrix } (A) =
+              \begin{bmatrix}
+                k_{\text{roll},f} & 0                 & -TR \\[6pt]
+                0                 & k_{\text{roll},r} &  TR \\[6pt]
+                1                 & -1                &  1
+              \end{bmatrix}
+            \]
+          </div>
+
+          <div class="eq-box">
+            \[
+              \text{Load Matrix } (M) =
+              \begin{bmatrix}
+                M_{fu} + \dfrac{b}{a+b}\,M_s \\[10pt]
+                M_{ru} + \dfrac{a}{a+b}\,M_s \\[10pt]
+                0
+              \end{bmatrix}
+            \]
+          </div>
+
+          <div class="eq-box">
+            \[
+              \text{Roll Angle Solution } (R) = A^{-1} M
+              =
+              \begin{bmatrix}
+                \phi_f \\[10pt]
+                \phi_r \\[10pt]
+                \phi_{\text{body}}
+              \end{bmatrix}
+            \]
+          </div>
+        </div>
+
+        <div id="Transient Numerical Analysis">
+          <h4>3.1.2. Transient Numerical Analysis</h4>
+          <p>
+            Following the steady-state roll angle calculation, the transient lateral load transfer at the front
+            and rear axles is computed by time-stepping the roll dynamics using the Dormand-Prince
+            Runge-Kutta (RK45) integration scheme. The state-space formulation of the two-axle roll system is
+            expressed as:
+          </p>
+
+          <div class="math-block">
+            \[
+              \begin{bmatrix}
+                \dot{x}_1 \\ \dot{x}_2 \\ \dot{x}_3 \\ \dot{x}_4
+              \end{bmatrix}
+              =
+              \underbrace{
+              \begin{bmatrix}
+                0 & 1 & 0 & 0 \\[4pt]
+                -\dfrac{k_f}{I} & -\dfrac{c_f}{I} & 0 & 0 \\[10pt]
+                0 & 0 & 0 & 1 \\[4pt]
+                0 & 0 & -\dfrac{k_r}{I} & -\dfrac{c_r}{I}
+              \end{bmatrix}
+              }_{A}
+              \begin{bmatrix}
+                x_1 \\ x_2 \\ x_3 \\ x_4
+              \end{bmatrix}
+              +
+              \underbrace{
+              \begin{bmatrix}
+                0 \\[4pt] \dfrac{M_f}{I} \\[10pt] 0 \\[4pt] \dfrac{M_r}{I}
+              \end{bmatrix}
+              }_{\mathbf{b}}
+            \]
+          </div>
+
+          <div class="math-block">
+            \[
+              \begin{bmatrix}
+                x_1 \\ x_2 \\ x_3 \\ x_4
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+                \text{Front Roll Angle} \quad (\theta_f) \\[6pt]
+                \text{Front Roll Angular Velocity} \quad (\omega_f) \\[6pt]
+                \text{Rear Roll Angle} \quad (\theta_r) \\[6pt]
+                \text{Rear Roll Angular Velocity} \quad (\omega_r)
+              \end{bmatrix}
+            \]
+          </div>
+
+          <!-- Figure 14 -->
+          <image-component tag="image" source="assets/FYP_rollvstime.png"
+            subtitle="Figure 14: Front and Rear Roll Angle vs. Time (Numerical Simulation)" style="margin-top: 40px;"></image-component><br>
+          <!-- Figure 15 -->
+          <image-component tag="image" source="assets/FYP_rollvelocityvstime.png"
+            subtitle="Figure 15: Front and Rear Roll Angular Velocity vs. Time (Numerical Simulation)" style="margin-top: 20px;"></image-component><br>
+          <!-- Figure 16 -->
+          <image-component tag="image" source="assets/FYP_frontlateralloadtransfer.png"
+            subtitle="Figure 16: Front Axle Lateral Load Transfer — Geometric and Elastic Components vs. Time" style="margin-top: 20px;"></image-component><br>
+          <!-- Figure 17 -->
+          <image-component tag="image" source="assets/FYP_rearlateralloadtransfer.png"
+            subtitle="Figure 17: Rear Axle Lateral Load Transfer — Geometric and Elastic Components vs. Time" style="margin-top: 20px;"></image-component><br>
+
+          <p>
+            Figures 14 and 15 show the time histories of the roll angle and roll angular velocity obtained from
+            the numerical integration. These transient quantities govern the elastic component of lateral load
+            transfer at each axle, which is also plotted in Figures 16 and 17. As expected, the geometric load
+            transfer — which depends solely on the vehicle's mass, roll center heights, and lateral
+            acceleration — remains constant for a given steady-state condition and is independent of the
+            suspension setup. In contrast, the elastic load transfer evolves dynamically during body roll and
+            only reaches its steady-state value once the chassis settles at the equilibrium roll angle. This
+            transient behaviour is directly influenced by the spring and damper rates at each axle.
+          </p>
+        </div>
+      </div>
+
+      <div id="MoTeC Data Analysis">
+        <h3>3.2. MoTeC Data Analysis</h3>
+        <!-- Figure 18 -->
+        <image-component tag="image" source="assets/FYP_competitionskidpad.png"
+          subtitle="Figure 18: MoTeC Logged Performance Parameters During Competition Skidpad Stint" style="margin-top: 30px;"></image-component><br>
+        <p>
+          Figure 18 presents the key performance parameters logged by the MoTeC data acquisition system during
+          the competition skidpad stint. From this data, the time-resolved lateral acceleration and linear
+          potentiometer (suspension displacement) signals are extracted and used as inputs to the numerical roll
+          model, enabling the computation of instantaneous load transfer values throughout the event.
+        </p>
+        <!-- Figure 19 -->
+        <image-component tag="image" source="assets/FYP_moteclateralloadtransferdata.png"
+          subtitle="Figure 19: Post-Processed Lateral Load Transfer Derived from MoTeC Competition Data" style="margin-top: 30px;"></image-component><br>
+      </div>
+    </div>
+
+    <!-- ===================== SECTION 4: SUSPENSION SETUP ===================== -->
+    <div id="Suspension Setup">
+      <h2>4. Suspension Setup</h2>
+      <p>
+        Using the lateral load transfer analysis from the numerical model, the suspension setup can be
+        systematically optimised to achieve a more balanced load transfer distribution between the front and
+        rear axles. This section discusses the selection of spring, anti-roll bar, and damping rates to achieve
+        the target load transfer distribution and their effect on handling balance. The selection of appropriate
+        damping rates to complement the spring setup and produce a stable, predictable handling response is also
+        addressed.
+      </p>
+
+      <div id="Damping Roll Optimisation">
+        <h3>4.1. Damping Roll Optimisation</h3>
+        <p>
+          Damping optimisation for roll control focuses on tuning the damping characteristics of the suspension
+          to govern how quickly and smoothly the vehicle body rolls into a corner. The objective is to achieve a
+          suitably rapid roll response without introducing excessive overshoot or a significant delay in rise
+          time. Correctly tuned damping is essential for maintaining consistent tyre contact with the road,
+          ensuring chassis stability, and producing a predictable handling response.
+        </p>
+        <!-- Figure 20 -->
+        <image-component tag="image" source="assets/FYP_500damping.png"
+          subtitle="Figure 20: Roll Angle vs. Time Under Low Damping Conditions (500 Ns/m)" style="margin-top: 30px;"></image-component><br>
+        <p>
+          As illustrated in Figure 20, under low damping conditions the roll angle oscillates significantly
+          before settling to a steady-state value. This underdamped response produces an unstable and
+          inconsistent handling feel, as the tyre contact loads vary continuously during the transient phase.
+          Prolonged oscillation can also cause periodic tyre unloading, reducing peak lateral grip and
+          increasing lap time variability.
+        </p>
+        <!-- Figure 21 -->
+        <image-component tag="image" source="assets/FYP_dampingoptimisationroll.png"
+          subtitle="Figure 21: Roll Angle vs. Time for Various Target Overshoot Levels — Front Axle Damping Optimisation (Nelder-Mead)" style="margin-top: 30px;"></image-component><br>
+        <p>
+          The Nelder-Mead simplex algorithm was used to identify the optimal damping coefficient for a range of
+          target overshoot values. The rise time — defined as the time taken for the roll angle to reach 90% of
+          its steady-state value — was monitored alongside overshoot to ensure that reducing overshoot did not
+          introduce an unacceptably slow suspension response. As shown in Figure 21, the zero-overshoot case
+          results in a noticeably delayed rise time, indicating an overdamped condition in which the suspension
+          responds sluggishly to changes in lateral load.
+        </p>
+        <!-- Figure 22 -->
+        <image-component tag="image" source="assets/FYP_dampingsensitivity.png"
+          subtitle="Figure 22: Sensitivity of Roll Response Rise Time to Target Overshoot Percentage" style="margin-top: 30px;"></image-component><br>
+        <p>
+          The sensitivity plot in Figure 22 confirms that as target overshoot increases, the corresponding rise
+          time decreases monotonically. Notably, the rise time penalty for reducing overshoot from 10% to 0% is
+          approximately 0.04 seconds — a significant delay relative to the 0.01 seconds change observed across
+          the 10%–20% overshoot range. This disproportionate sensitivity reinforces the selection of 10%–20%
+          overshoot as the operating target, balancing roll control performance with transient response speed.
+        </p>
+        <!-- Figure 23 -->
+        <image-component tag="image" source="assets/FYP_dampingoptimisationvalues.png"
+          subtitle="Figure 23: Optimal Damping Coefficients vs. Target Overshoot Percentage for Front and Rear Axles" style="margin-top: 30px;"></image-component><br>
+        <p>
+          At a target overshoot of 10%–20%, the optimal roll damping coefficients are in the range of
+          3000–4000 Nms/rad for both the front and rear axles, as shown in Figure 23. This range provides an
+          effective balance between suppressing excessive body roll and preserving a responsive suspension
+          reaction during cornering.
+        </p>
+      </div>
+
+      <div id="Lateral Load Transfer Distribution">
+        <h3>4.2. Lateral Load Transfer Distribution</h3>
+        <p>
+          Lateral load transfer distribution describes how the total lateral load transfer is apportioned
+          between the front and rear axles during cornering. It is one of the primary tuning parameters
+          governing a vehicle's handling balance: a distribution biased toward the rear axle promotes oversteer,
+          while a front-biased distribution promotes understeer. Achieving a well-balanced distribution is
+          therefore critical for producing a stable, controllable, and consistent handling response.
+        </p>
+        <!-- Figure 24 -->
+        <image-component tag="image" source="assets/FYP_300_300.png"
+          subtitle="Figure 24: Lateral Load Transfer Distribution — R25e Configuration (300 lb/in Front and Rear)" style="margin-top: 30px;"></image-component><br>
+        <p>
+          Figure 24 shows the lateral load transfer distribution for the R25e spring configuration (300 lb/in
+          at both axles). The distribution is clearly biased toward the rear axle, indicating that the rear
+          suspension carries a disproportionately large share of the total lateral load transfer.
+        </p>
+        <!-- Figure 25 -->
+        <image-component tag="image" source="assets/FYP_225_200.png"
+          subtitle="Figure 25: Lateral Load Transfer Distribution — R26e Optimised Configuration (225 lb/in Front, 200 lb/in Rear)" style="margin-top: 30px;"></image-component><br>
+        <p>
+          Figure 25 shows the lateral load transfer distribution for the revised R26e spring configuration
+          (225 lb/in front, 200 lb/in rear). Compared to Figure 24, the distribution is significantly more
+          balanced between the front and rear axles, indicating that both axles now share a more proportionate
+          fraction of the total lateral load transfer. This more neutral distribution is expected to reduce the
+          tendency for rear-axle grip saturation, producing a more predictable and balanced handling response
+          during cornering.
+        </p>
+      </div>
+
+      <div id="Ride Analysis">
+        <h3>4.3. Ride Analysis</h3>
+        <!-- Figure 26 -->
+        <image-component tag="image" source="assets/FYP_johndfigure2.18.2.png"
+          subtitle="Figure 26: Two-Degree-of-Freedom (DOF) Ride Analysis Model Diagram (John C, 2007)" style="margin-top: 30px;"></image-component><br>
+        <p>
+          Ride analysis evaluates the vehicle's vertical dynamic response to road inputs, characterising how
+          effectively the suspension isolates the chassis from road irregularities while maintaining consistent
+          tyre loading. The analysis models the vehicle as a two DOF system incorporating heave
+          and pitch motions, and the results are used to assess roadholding capability and the adequacy of the
+          chosen spring and damper rates.
+        </p>
+        <!-- Figure 27 -->
+        <image-component tag="image" source="assets/FYP_pitchandbounce.png"
+          subtitle="Figure 27: Illustration of Pitch and Bounce Modes of Vehicle Vertical Motion (Salman, 2020)" style="margin-top: 30px;"></image-component><br>
+        <p>
+          Bounce and pitch are the two fundamental modes of vertical motion in a vehicle's suspension system.
+          Bounce describes a pure vertical oscillation of the entire body, while pitch describes a
+          rotational oscillation about the vehicle's lateral axis — causing the front and rear to move in
+          opposition. Both modes are governed by the suspension spring and damper rates, and their natural
+          frequencies and damping ratios must be carefully tuned to achieve an acceptable balance between
+          roadholding and handling.
+        </p>
+        <!-- Figure 28 -->
+        <image-component tag="image" source="assets/FYP_rideanalysisR25e.png"
+          subtitle="Figure 28: MATLAB 2-DOF Ride Analysis Simulation Results — R25e Suspension Configuration" style="margin-top: 30px;"></image-component><br>
+        <!-- Figure 29 -->
+        <image-component tag="image" source="assets/FYP_rideanalysis.png"
+          subtitle="Figure 29: MATLAB 2-DOF Ride Analysis Simulation Results — R26e Suspension Configuration" style="margin-top: 20px;"></image-component><br>
+
+        <pre style="color:rgb(0, 0, 0); padding:15px; border-radius:8px;">
+          300 lb/in front, 300 lb/in rear suspension setup:
+          --- System Properties ---
+          Pitch  : omega_n = 34.5042 rad/s  |  zeta = 1.8171
+          Bounce : omega_n = 31.4107 rad/s  |  zeta = 1.5836
+          Pitch mode: OVERDAMPED
+
+          Running RK4 (2-DOF heave+pitch)...
+          Done. 1001 steps.
+
+          --- Axle Response Metrics ---
+          Peak Front Axle Displacement : 36.2734 mm
+          Peak Rear  Axle Displacement : 22.8159 mm
+          Peak Pitch Angle             : 1.1043 deg
+          Peak CG Heave                : 22.7157 mm
+
+          225 lb/in front, 200 lb/in rear suspension setup:
+          --- System Properties ---
+          Pitch  : omega_n = 29.8814 rad/s  |  zeta = 2.0982
+          Bounce : omega_n = 26.4360 rad/s  |  zeta = 1.8815
+          Pitch mode: OVERDAMPED
+
+          Running RK4 (2-DOF heave+pitch)...
+          Done. 1001 steps.
+
+          --- Axle Response Metrics ---
+          Peak Front Axle Displacement : 35.9360 mm
+          Peak Rear  Axle Displacement : 21.8759 mm
+          Peak Pitch Angle             : 1.0902 deg
+          Peak CG Heave                : 21.7807 mm
+        </pre>
+
+        <p>
+          The MATLAB simulation results presented in Figures 28 and 29 represent the R25e and R26e suspension
+          setups respectively. Both setups exhibit overdamped pitch and bounce modes, confirming that neither
+          configuration is prone to sustained oscillation in response to road inputs. The softer R26e setup
+          yields marginally lower peak front and rear axle displacements, a slightly reduced peak pitch angle,
+          and a lower peak CG heave value. These results indicate that the revised spring rates produce a
+          modestly improved vertical dynamic response, with the softer springs enabling the suspension to absorb
+          road inputs more effectively. Consequently, the R26e configuration is expected to deliver improved
+          roadholding and handling consistency during steady-state dynamic events.
+        </p>
+        <p>
+          However, for transient dynamic events, R26e's softer setup has a lower pitch and bounce natural
+          frequency, which may result in a slower response to rapid changes in road conditions and driver
+          inputs. This trade-off will need to be carefully evaluated through testing and driver feedback to
+          ensure that the handling benefits of the softer setup are not offset by a reduction in responsiveness
+          during transient events.
+        </p>
+      </div>
+
+      <div id="R26e Test-Run Data and Validation">
+        <h3>4.4. R26e Test-Run Data and Validation</h3>
+        <p>
+          To validate the theoretical analysis and confirm that the revised suspension setup achieves the
+          intended improvements in handling performance, test runs were conducted with R26e using both the
+          original 300 lb/in spring configuration and the revised 225 lb/in front, 200 lb/in rear
+          configuration. Skidpad test runs were selected for this validation, as they provide a controlled
+          environment to evaluate cornering performance and handling consistency under steady-state lateral
+          acceleration conditions.
+        </p>
+        <!-- Figure 30 -->
+        <image-component tag="image" source="assets/FYP_R26eskidpad300.png"
+          subtitle="Figure 30: Linear Potentiometer Displacement vs. Lateral Acceleration — R26e with 300 lb/in Springs (Both Axles)" style="margin-top: 30px;"></image-component><br>
+        <p>
+          Figure 30 shows the linear potentiometer displacement plotted against lateral acceleration during an
+          R26e test run using the original R25e 300 lb/in spring configuration. The data reveals that both the
+          left and right rear potentiometers consistently read a value of 0 mm (fully extended) at lateral
+          accelerations beyond approximately 0.5 g. This saturated extension indicates that the dampers have
+          reached their full droop travel limit and are no longer able to maintain tyre contact with the road
+          surface. As a result, the inner rear wheel lifts off the ground, causing the car to lose traction —
+          a condition that is highly detrimental to cornering performance.
+        </p>
+        <!-- Figure 31 -->
+        <image-component tag="image" source="assets/FYP_R26eskidpad225&200.png"
+          subtitle="Figure 31: Linear Potentiometer Displacement vs. Lateral Acceleration — R26e with 225 lb/in Front, 200 lb/in Rear Springs" style="margin-top: 30px;"></image-component><br>
+        <p>
+          Figure 31 presents the equivalent data for the revised R26e spring configuration (225 lb/in front,
+          200 lb/in rear). With the softer spring rates, the potentiometer displacement only approaches 0 mm
+          at lateral accelerations exceeding 1.0 g at the front, and approximately 1.4 g at the rear — at
+          which point approximately 1 mm of additional droop travel remains. This confirms that the revised
+          setup substantially increases the effective droop travel envelope, allowing the suspension to maintain
+          tyre contact across a wider range of cornering loads.
+        </p>
+        <!-- Figure 32 -->
+        <image-component tag="image" source="assets/FYP_300_300_G_G.png"
+          subtitle="Figure 32: G-G Diagram — R26e with 300 lb/in Springs (Both Axles)" style="margin-top: 30px;"></image-component><br>
+        <!-- Figure 33 -->
+        <image-component tag="image" source="assets/FYP_225_200_G_G.png"
+          subtitle="Figure 33: G-G Diagram — R26e with 225 lb/in Front, 200 lb/in Rear Springs" style="margin-top: 20px;"></image-component><br>
+        <p>
+          Figures 32 and 33 show the G-G diagrams for R26e with the 300 lb/in and the 225 lb/in front,
+          200 lb/in rear spring configurations respectively. The G-G diagram plots longitudinal acceleration
+          against lateral acceleration, providing a visual representation of the vehicle's dynamic performance
+          envelope. The data confirms that the revised spring setup allows R26e to achieve more consistent
+          lateral grip, as the scatter plot shows a dense clustering of data points within 0.5 g to 1.6 g of
+          lateral acceleration. In contrast, the 300 lb/in configuration shows a much wider scatter,
+          particularly at higher lateral accelerations, indicating more frequent and severe tyre slip due to
+          the inner rear wheel lifting off the ground. The improved consistency in Figure 33 is a strong
+          indicator of enhanced handling performance and better utilisation of available grip during cornering.
+        </p>
+      </div>
+    </div>
+
+    <!-- ===================== SECTION 5: STEERING SYSTEM ASSEMBLY ===================== -->
+    <div id="Steering System Assembly">
+      <h2>5. Steering System Assembly</h2>
+      <!-- Figure 34 -->
+      <image-component tag="image" source="assets/FYP_steeringassembly.png"
+        subtitle="Figure 34: R26e Steering System Assembly — Overview" style="margin-top: 30px;"></image-component><br>
+      <p>
+        The R26e steering system comprises four principal sub-assemblies: the steering wheel, steering shaft,
+        steering rod, and steering rack, each discussed in the following sections.
+      </p>
+
+      <div id="Steering Rack Assembly">
+        <h3>5.1. Steering Rack Assembly</h3>
+        <!-- Figure 35 -->
+        <image-component tag="image" source="assets/FYP_steeringrackassembly.png"
+          subtitle="Figure 35: Steering Rack Sub-Assembly" style="margin-top: 30px;"></image-component><br>
+        <p>
+          The steering rack converts rotational input from the steering wheel into linear motion to actuate the
+          front wheels. The inboard steering clevis is secured to the rack with Loctite thread-locking compound
+          to prevent loosening under cyclic loading.
+        </p>
+      </div>
+
+      <div id="Steering Shaft Assembly">
+        <h3>5.2. Steering Shaft Assembly</h3>
+        <!-- Figure 36 -->
+        <image-component tag="image" source="assets/FYP_steeringshaftassembly.png"
+          subtitle="Figure 36: Steering Shaft Sub-Assembly" style="margin-top: 30px;"></image-component><br>
+        <p>
+          The steering shaft transmits rotational input from the steering wheel to the rack. A double
+          universal joint (U-joint) accommodates angular misalignment between the two sub-systems, and a
+          steering brace constrains the column against deflection under load.
+        </p>
+
+        <div id="Steering Brace">
+          <h4>5.2.1. Steering Brace</h4>
+          <!-- Figure 37 -->
+          <image-component tag="image" source="assets/FYP_steeringbracejig.jpg"
+            subtitle="Figure 37: Steering Brace Welding Jig" style="margin-top: 30px;"></image-component><br>
+          <p>
+            A dedicated welding jig ensures the TIG-welded steering brace conforms to the CAD geometry.
+            Sacrificial spacers are installed before welding and removed afterwards to preserve internal
+            clearances and minimise distortion from weld shrinkage.
+          </p>
+          <!-- Figure 38 -->
+          <image-component tag="image" source="assets/FYP_steeringbraceweld.jpg"
+            subtitle="Figure 38: Steering Brace TIG Welding Process" style="margin-top: 30px;"></image-component><br>
+          <p>
+            The brace must be fully seam welded and allowed to cool completely while still fixtured; premature
+            jig removal releases residual thermal stresses and causes warping.
+          </p>
+          <!-- Figure 39 -->
+          <image-component tag="image" source="assets/FYP_steeringbracewarp.jpg"
+            subtitle="Figure 39: Steering Brace Geometric Distortion Due to Premature Jig Removal" style="margin-top: 30px;"></image-component><br>
+          <p>
+            On R26e, the brace was removed before fully cooling, causing it to deviate from the intended
+            geometry. Corrective re-welding of a supporting member restored alignment, but introduced
+            additional heat-affected zones that may reduce local weld strength and create stress
+            concentrations in the structure.
+          </p>
+        </div>
+
+        <div id="Steering Column">
+          <h4>5.2.2. Steering Column</h4>
+          <!-- Figure 40 -->
+          <image-component tag="image" source="assets/FYP_bearing.jpg"
+            subtitle="Figure 40: Steering Column Support Bearing" style="margin-top: 30px;"></image-component><br>
+          <p>
+            The steering column uses a press-fitted support bearing for smooth shaft rotation. During assembly,
+            the column tube outer diameter was found to exceed the bearing bore tolerance, requiring hand-sanding
+            to achieve the correct fit. This may introduce marginal play in the shaft, reducing steering feel
+            precision under dynamic loading.
+          </p>
+          <!-- Figure 41 -->
+          <image-component tag="image" source="assets/FYP_doubleUV.png"
+            subtitle="Figure 41: Double U-Joint — Steering Column" style="margin-top: 30px;"></image-component><br>
+          <p>
+            The double U-joint is spot welded first to maintain concentric yoke alignment, followed by a
+            full seam weld applied with intermittent cooling pauses to prevent heat damage to the internal
+            bearing components. On R26e, overheating caused the internal lubricant to vaporise and escape.
+            The dry joint remains functional for oscillatory steering loads, but accelerated needle bearing
+            wear is expected over time, which should be addressed before competition.
+          </p>
+        </div>
+      </div>
+
+      <div id="Installation">
+        <h3>5.3. Installation</h3>
+        <!-- Figure 42 -->
+        <image-component tag="image" source="assets/FYP_installation.jpg"
+          subtitle="Figure 42: Steering Assembly Installed in R26e Chassis" style="margin-top: 30px;"></image-component><br>
+        <!-- Figure 43 -->
+        <image-component tag="image" source="assets/FYP_steeringwheelalignment.jpg"
+          subtitle="Figure 43: Steering Wheel Neutral Position Alignment Using Inclinometer" style="margin-top: 20px;"></image-component><br>
+        <p>
+          Following chassis installation, steering stops are fitted to the rack to define travel limits.
+          The steering wheel is levelled using a digital inclinometer, and the final fixing hole in the
+          column is drilled to lock the shaft at the neutral position.
+        </p>
+      </div>
+        <div id="Cost Report">
+          <h3>5.4. Cost Report</h3>
+          <image-component tag="image" source="assets/FYP_cost.png"
+          subtitle="Figure 44: Cost Analysis of Steering System" style="margin-top: 20px;"></image-component><br>
+          <p>
+            The total cost of the steering system assembly is approximately $500, with the steering rack and
+            shaft being the most significant contributors due to their precision manufacturing requirements. The
+            custom steering brace and associated welding costs are also notable, particularly given the need for
+            rework to correct geometric distortion. Future iterations could explore alternative brace designs or
+            fabrication methods to reduce costs while maintaining structural integrity.
+          </p>
+        </div> 
+      </div>
+
     <sl-divider></sl-divider>
-    <div>
-      <div id="Future Work & Additional Remarks">
-        <h2>3. Future Work & Additional Remarks</h2>
-        <image-component tag="image" source="assets/gantt.png"
-              subtitle="Image 20: NUS FSAE Timeline"></image-component><br>
-        <p>
-          According to the timeline above, majority of my testing and validation work will be done during Feb-26 to
-          May-26. I will be conducting various tests to validate the changes made to the suspension design and steering 
-          system. Data will be collected during testing sessions to conduct a comprehensive comparison between
-          R26e and R25e.
-        </p>
-        <image-component tag="image" source="assets/R26e Steering Assembly.png"
-              subtitle="Image 21: R26e Steering Assembly CAD Model"></image-component><br>
-        <p>
-          The assembly I am responsible to manufacture for R26e will be the steering system as shown above during Dec-25
-          to Jan-26. To ensure the robustness and reliability of the design, FEA analysis will be refined and repeatedly
-          studied to identify potential failure points before manufacturing and assembly.
-        </p>
 
-      </div>
-
+    <!-- ===================== SECTION 6: FUTURE WORK ===================== -->
+    <div id="Future Work & Additional Remarks">
+      <h2>6. Future Work &amp; Additional Remarks</h2>
+      <!-- Figure 45 -->
+      <image-component tag="image" source="assets/gantt.png"
+        subtitle="Figure 45: R26e Project Timeline and Milestone Schedule"></image-component><br>
+      <p>
+        As shown in Figure 45, the team is currently in the testing and validation phase, scheduled to
+        conclude at the start of the FSAE Electric Michigan competition in June 2026. Work will continue on
+        refining the vehicle dynamics model and suspension setup to translate the findings of this report into
+        measurable on-track performance gains.
+      </p>
     </div>
 
-    
-
-    <!-- This is an example of how you can use the references component to create references -->
+    <!-- ===================== REFERENCES ===================== -->
     <div id="references" class="references">
       <sl-divider></sl-divider>
       <h2>References</h2>
       <ul>
-        <li>
-          Frömming, L. (2023). Basic Course in Race Car Technology. Springer Vieweg.
-        <li>
-          Golawki, S., Snyder, A. (2023). Skidpad Event Description - Formula SAE.
-        </li>
-        <li>
-          Gillespie, T. D. (2021). Fundamentals of Vehicle Dynamics Revised Edition. SAE International.
-        </li>
-        <li>
-          Milliken, D. L., Milliken W. F. (1995). Race Car Vehicle Dynamics. SAE International.
-        </li>
-        <li>
-          Pütz, R., Serné, T. (2025). Race Car Handling Optimization: Magic Numbers to Better 
-          Understand a Race Car Second Edition. Springer Nature.
-        </li>
-        <li>
-          Powercat Motorsports. (n.d.). Description of Events at Competitions. 
-          URL: https://www.k-state.edu/powercatmotorsports/competitions/description-of-events.html
-        </li>
-         <li>
-          Rouelle, C. (n.d.). Race Car Engineering Seminar & Consulting. OptimumG.
-        </li>
-        <li>
-          Rill, G., Castro, A. A. (2020). Road Vehicle Dynamics, Fundamentals and Modelling with MATLAB®. Taylor & Francis
-          Group.
-        </li>
-        <li>
-          Seward, D. (2014). Race Car Design.
-        </li>
+        <li>Frömming, L. (2023). <em>Basic Course in Race Car Technology.</em> Springer Vieweg.</li>
+        <li>Goslawski, S., Snyder, A. (2023). <em>Skidpad Event Description - Formula SAE.</em></li>
+        <li>Gillespie, T. D. (2021). <em>Fundamentals of Vehicle Dynamics Revised Edition.</em> SAE International.</li>
+        <li>John C, D. (2007). <em>The Shock Absorber Handbook, Second Edition.</em></li>
+        <li>Milliken, D. L., Milliken, W. F. (1995). <em>Race Car Vehicle Dynamics.</em> SAE International.</li>
+        <li>Pütz, R., Serné, T. (2025). <em>Race Car Handling Optimization: Magic Numbers to Better Understand a Race Car, Second Edition.</em> Springer Nature.</li>
+        <li>Powercat Motorsports. (n.d.). <em>Description of Events at Competitions.</em> URL: https://www.k-state.edu/powercatmotorsports/competitions/description-of-events.html</li>
+        <li>Reza, N. J., Hormaoz, M. (2023). <em>Vehicle Vibrations.</em></li>
+        <li>Rouelle, C. (n.d.). <em>Race Car Engineering Seminar &amp; Consulting.</em> OptimumG.</li>
+        <li>Rill, G., Castro, A. A. (2020). <em>Road Vehicle Dynamics: Fundamentals and Modelling with MATLAB.</em> Taylor &amp; Francis Group.</li>
+        <li>Salman, E. (2020). <em>Multi-objective optimization of a sports car suspension system using simplified quarter-car models.</em></li>
+        <li>Seward, D. (2014). <em>Race Car Design.</em></li>
       </ul>
     </div>
+
     <sl-divider></sl-divider>
+
+    <!-- ===================== DECLARATION ===================== -->
     <div id="Declaration">
       <h2>Declaration</h2>
       <p>
-        I declare that this report is my own work and that all sources of information have been
-        acknowledged by means of reference. I have not submitted this report, or any part of it,
-        for assessment to any other university or institution. Total word count: 3000 words.
+        I declare that this report is my own work and that all sources of information have been properly
+        acknowledged through citation. This report, or any part thereof, has not been submitted for assessment
+        at any other university or institution. Total word count: 4988 words.
       </p>
       <p>
-        AI Usage Declaration: I declare that I have used AI tools in the preparation of this report.
-        ChatGPT 4.0 was used to assist in improving the grammar and sentence structure of certain paragraphs.
-        CoPilot was used to generate boilerplate code for HTML components and for generative text suggestions.
+        <strong>AI Usage Declaration:</strong> I declare that AI tools were used in the preparation of this
+        report. ChatGPT 4.0 was used to assist in improving the grammar and sentence structure of selected
+        paragraphs. GitHub Copilot was used to generate boilerplate HTML component code and to provide
+        generative text suggestions during drafting.
       </p>
     </div>
-    
-  </div>
 
-  <!-- This is the code to display the scroll to top button for ergonomic -->
-  <!-- You can leave it as it is, or if you don't like its aesthetics you can also just delete it, -->
-  <!-- but it might reduce the user experience. -->
+    <!-- ===================== APPENDIX ===================== -->
+    <div id="Appendix">
+      <h2>Appendix</h2>
+      <p>
+        The appendix contains supplementary data, calculations, and code that support the analysis and
+        conclusions presented in the main body of the report. This includes detailed mathematical derivations,
+        raw data from testing sessions, and additional context where relevant.
+      </p>
+
+      <div id="Appendix A">
+        <h2>Appendix A: Lateral Load Transfer Calculations</h2>
+        <iframe src="assets/appendixA_lateralloadtransferTest.pdf" width="100%" height="800px"></iframe>
+        <iframe src="assets/appendixA_figures.pdf" width="100%" height="800px"></iframe>
+      </div>
+
+      <div id="Appendix B">
+        <h2>Appendix B: MoTeC Lateral Load Transfer Data</h2>
+        <iframe src="assets/AppendixB_MoTeCLLT.pdf" width="100%" height="800px"></iframe>
+        <iframe src="assets/AppendixB_figures.pdf" width="100%" height="800px"></iframe>
+      </div>
+
+      <div id="Appendix C">
+        <h2>Appendix C: Damping Optimisation</h2>
+        <iframe src="assets/AppendixC_dampingoptimisation.pdf" width="100%" height="800px"></iframe>
+        <iframe src="assets/AppendixC_figures.pdf" width="100%" height="800px"></iframe>
+      </div>
+
+      <div id="Appendix D">
+        <h2>Appendix D: Lateral Load Transfer Distribution</h2>
+        <iframe src="assets/AppendixD_lateralloadtransferdistribution.pdf" width="100%" height="800px"></iframe>
+        <iframe src="assets/AppendixD_figures.pdf" width="100%" height="800px"></iframe>
+      </div>
+
+      <div id="Appendix E">
+        <h2>Appendix E: Ride Analysis</h2>
+        <iframe src="assets/AppendixE_rideanalysis.pdf" width="100%" height="800px"></iframe>
+        <iframe src="assets/AppendixE_figures.pdf" width="100%" height="800px"></iframe>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- end .content -->
+
   <sl-button class="scroll-to-top" variant="primary" size="medium" circle onclick="scrollToTop()">
-    <sl-icon name="arrow-up" label="Settings"></sl-icon>
+    <sl-icon name="arrow-up" label="Scroll to top"></sl-icon>
   </sl-button>
 
   <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
